@@ -1,7 +1,7 @@
 #include "FinniganFileReaderFactory.hpp"
-#include "FinniganFileReader66.hpp"
+//#include "FinniganFileReader66.hpp"
 #include <iostream>
-#include <ifstream>
+#include <fstream>
 #include <cstdint>
 
 using namespace org::openscience::ms;

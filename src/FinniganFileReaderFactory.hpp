@@ -7,7 +7,6 @@ namespace org::openscience::ms {
 
 	FinniganFileReader* make_finnigan_file_reader(const char* file);
 
-	};
 }
 
 #endif // FINNIGAN_FILE_READER_FACTORY
