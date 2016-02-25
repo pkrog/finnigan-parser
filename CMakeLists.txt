@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 2.8)
 project(finnigan-parser)
 
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+	add_definitions(-std=c++11)
+	add_definitions(-Wno-c++1z-extensions)
+endif()
+
 ############
 # UNTHERMO #
 ############
