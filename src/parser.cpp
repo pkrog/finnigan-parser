@@ -1,6 +1,7 @@
 #include "Factory.hpp"
 #include "Logger.hpp"
 #include <iostream>
+#include "Reader.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
@@ -28,6 +29,8 @@ int main(int argc, char* argv[]) {
 	Reader* reader = factory.make_reader(file);
 	if ( ! reader)
 		return NOT_A_FINNIGAN_FILE;
+	std::wcout << L"MAGIC = " << std::hex << boost::any_cast<int>(reader->get_property(Property::Magic)) << L"\n";
+	std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader->get_property(Property::Signature)) << L"\n";
 
 	return 0;
 }

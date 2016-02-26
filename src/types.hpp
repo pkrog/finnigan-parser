@@ -15,6 +15,18 @@ namespace org::openscience::ms::finnigan {
 	typedef uint16_t    magic_t;
 	typedef uint32_t    version_t;
 
+	////////////////
+	// PROPERTIES //
+	////////////////
+
+	// TODO Can we incorporate properties (type and size) inside the Property elements ? Like in Java.
+	enum class Property { Magic, Signature };
+
+	enum class Type { uint16, cstring };
+
+	Type get_property_type_in_file(Property);
+	int get_property_size(Property);
+
 	///////////////
 	// AUDIT TAG //
 	///////////////

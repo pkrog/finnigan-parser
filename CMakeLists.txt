@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(finnigan-parser)
 
+find_package(Boost REQUIRED)
+
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 	add_definitions(-std=c++11)
 	add_definitions(-Wno-c++1z-extensions)
@@ -20,4 +22,6 @@ endif()
 #                )
 
 file(GLOB sources RELATIVE ${CMAKE_CURRENT_LIST_DIR} src/*.cpp)
-add_executable(finnigan_parser ${sources})
+include_directories(${Boost_INCLUDE_DIRS})
+add_executable(finnigan-parser ${sources})
+#TARGET_LINK_LIBRARIES(finnigan-parser ${Boost_LIBRARIES})
