@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 	// Get input raw file path
 	// TODO Test that there's at least one arg
 	// TODO use some getopt lib
-	const char* file = argv[1];
+	const std::string file(argv[1]);
 
 	// Create reader instance from factory.
 	Logger logger(std::wcerr);

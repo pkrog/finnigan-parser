@@ -13,9 +13,10 @@ namespace org::openscience::ms::finnigan {
 
 			Logger(std::wostream&);
 
-			virtual void wrong_magic_number(const std::wstring& file, magic_t magic);
+			void tag(const std::string& file);
+			virtual void wrong_magic_number(const std::string& file, magic_t magic);
 
-			virtual void wrong_signature(const std::wstring& file, const std::wstring& signature);
+			virtual void wrong_signature(const std::string& file, const std::wstring& signature);
 
 		private:
 

@@ -2,6 +2,7 @@
 #define FINNIGAN_FACTORY
 
 #include <list>
+#include <string>
 
 namespace org::openscience::ms::finnigan {
 
@@ -18,7 +19,7 @@ namespace org::openscience::ms::finnigan {
 
 			void add_observer(Observer*);
 
-			Reader* make_reader(const char* file);
+			Reader* make_reader(const std::string& file);
 	};
 
 }

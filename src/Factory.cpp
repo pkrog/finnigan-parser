@@ -1,5 +1,5 @@
 #include "Factory.hpp"
-//#include "Reader66.hpp"
+#include "Reader66.hpp"
 #include <fstream>
 #include "types.hpp"
 #include "common.hpp"
@@ -19,19 +19,17 @@ void Factory::add_observer(Observer* obs) {
 // MAKE READER //
 /////////////////
 
-Reader* Factory::make_reader(const char* file) {
-
-	std::wstring f = arr2wstring(file);
+Reader* Factory::make_reader(const std::string& file) {
 
 	// Read header
 	Header header;
-	std::ifstream ifs(file, std::ios::in | std::ios_base::binary);
+	std::ifstream ifs(file.c_str(), std::ios::in | std::ios_base::binary);
 	ifs.read(reinterpret_cast<char*>(&header), sizeof(header));
 
 	// Check magic number
 	if (header.magic != MAGIC) {
 		for(auto o: this->observers)
-			o->wrong_magic_number(f, header.magic);
+			o->wrong_magic_number(file, header.magic);
 		return nullptr;
 	}
 
@@ -39,11 +37,21 @@ Reader* Factory::make_reader(const char* file) {
 	std::wstring signature = arr2wstring(header.signature);
 	if (signature.compare(SIGNATURE) != 0) {
 		for(auto o: this->observers)
-			o->wrong_signature(f, signature);
+			o->wrong_signature(file, signature);
 		return nullptr;
 	}
 
 	// Create parser instance
+	Reader* reader = nullptr;
+	switch(header.version) {
+		case 66: reader = new Reader66(file); break;
+		default: reader = header.version > 66 ? new Reader66(file) : new Reader(file);
+	}
 
-	return nullptr;
+	// Add observers
+	if (reader)
+		for(auto o: this->observers)
+			reader->add_observer(o);
+
+	return reader;
 }
