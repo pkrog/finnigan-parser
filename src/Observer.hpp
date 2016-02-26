@@ -14,6 +14,8 @@ namespace org::openscience::ms::finnigan {
 
 			virtual void wrong_signature(const std::string& file, const std::wstring& signature) {}
 
+			virtual void file_version(const std::string& file, version_t version) {}
+
 	};
 }
 

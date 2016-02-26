@@ -41,6 +41,10 @@ Reader* Factory::make_reader(const std::string& file) {
 		return nullptr;
 	}
 
+	// Found version
+	for(auto o: this->observers)
+		o->file_version(file, header.version);
+
 	// Create parser instance
 	Reader* reader = nullptr;
 	switch(header.version) {

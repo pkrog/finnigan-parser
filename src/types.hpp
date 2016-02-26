@@ -8,8 +8,27 @@
 
 namespace org::openscience::ms::finnigan {
 
+	/////////////////
+	// BASIC TYPES //
+	/////////////////
+
 	typedef uint16_t    magic_t;
 	typedef uint32_t    version_t;
+
+	///////////////
+	// AUDIT TAG //
+	///////////////
+
+	struct AuditTag { //112 bytes
+		uint64_t    time; // 8 bytes Windows 64-bit timestamp.
+		uint16_t    tag1[25];
+		uint16_t    tag2[25];
+		uint32_t    unknown;
+	};
+
+	////////////
+	// HEADER //
+	////////////
 
 	struct Header {
 		magic_t     magic;
@@ -19,11 +38,11 @@ namespace org::openscience::ms::finnigan {
 		uint32_t    unknown3;
 		uint32_t    unknown4;
 		version_t   version;
-	//	AuditStart AuditTag  //112 bytes
-	//	AuditEnd   AuditTag  //112 bytes
-	//	Unknown5   uint32    //4 bytes
-	//	Unknown6   [60]byte  //60 bytes
-	//	Tag        headertag //1028 bytes
+		AuditTag    audit_start;
+		AuditTag    audit_end;
+		uint32_t    unknown5;
+		uint8_t     unknown6[60];
+		uint16_t    tag[514];
 	};
 
 }
