@@ -13,7 +13,7 @@ namespace org::openscience::ms::finnigan {
 
 	class Observer;
 
-	class Reader {
+	class Reader : public Section {
 
 		public:
 

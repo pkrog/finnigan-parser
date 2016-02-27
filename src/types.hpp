@@ -19,12 +19,45 @@ namespace org::openscience::ms::finnigan {
 	// PROPERTIES //
 	////////////////
 
-	// TODO Can we incorporate properties (type and size) inside the Property elements ? Like in Java.
-	enum class Property { Magic, Signature };
+	enum class Property {
+		Magic,
+		Signature,
+		Version,
+		AuditStart,
+		AuditEnd,
+		Tag,
 
-	enum class Type { uint16, cstring };
+		Unknown1,
+		Unknown2,
+		Unknown3,
+		Unknown4,
+		Unknown5,
+		Unknown6,
+
+		LAST
+	};
+
+	////////////////////
+	// PROPERTY TYPES //
+	////////////////////
+
+	enum class Type {
+		uint8,
+		uint16,
+		uint32,
+		uint64,
+		cstring,
+		pstring,
+
+		NONE
+	};
+
+	/////////////////////////////
+	// GET PROPERTY ATTRIBUTES //
+	/////////////////////////////
 
 	Type get_property_type_in_file(Property);
+
 	int get_property_size(Property);
 
 	///////////////
