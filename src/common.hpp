@@ -2,6 +2,10 @@
 #define FINNIGAN_COMMON
 
 #include <string>
+#include <boost/any.hpp>
+
+#define MAGIC 0xa101
+#define SIGNATURE L"Finnigan"
 
 namespace org::openscience::ms::finnigan {
 

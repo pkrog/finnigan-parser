@@ -21,6 +21,8 @@ void Factory::add_observer(Observer* obs) {
 
 Reader* Factory::make_reader(const std::string& file) {
 
+	Reader* reader = nullptr;
+#if 0
 	// Read header
 	Header header;
 	std::ifstream ifs(file.c_str(), std::ios::in | std::ios_base::binary);
@@ -46,7 +48,6 @@ Reader* Factory::make_reader(const std::string& file) {
 		o->file_version(file, header.version);
 
 	// Create parser instance
-	Reader* reader = nullptr;
 	switch(header.version) {
 		case 66: reader = new Reader66(file); break;
 		default: reader = header.version > 66 ? new Reader66(file) : new Reader(file);
@@ -57,5 +58,6 @@ Reader* Factory::make_reader(const std::string& file) {
 		for(auto o: this->observers)
 			reader->add_observer(o);
 
+#endif
 	return reader;
 }

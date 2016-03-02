@@ -3,23 +3,24 @@
 
 #include <cstdint>
 
-#define MAGIC 0xa101
-#define SIGNATURE L"Finnigan"
+//#define MAGIC 0xa101
+//#define SIGNATURE L"Finnigan"
 
 namespace org::openscience::ms::finnigan {
 
 	/////////////////
 	// BASIC TYPES //
 	/////////////////
-
+#if 0
 	typedef uint16_t    magic_t;
 	typedef uint32_t    version_t;
+#endif
 
 	////////////////
 	// PROPERTIES //
 	////////////////
-
-	enum class Property {
+#if 0
+	enum class FieldId {
 		Magic,
 		Signature,
 		Version,
@@ -27,54 +28,38 @@ namespace org::openscience::ms::finnigan {
 		AuditEnd,
 		Tag,
 
-		Unknown1,
-		Unknown2,
-		Unknown3,
-		Unknown4,
-		Unknown5,
-		Unknown6,
-
-		LAST
+		Unknown
 	};
-
-	////////////////////
-	// PROPERTY TYPES //
-	////////////////////
-
-	enum class Type {
+#endif
+	/////////////////
+	// FIELD TYPES //
+	/////////////////
+#if 0
+	enum class FieldType {
 		uint8,
 		uint16,
 		uint32,
 		uint64,
 		cstring,
-		pstring,
-
-		NONE
+		pstring
 	};
-
-	/////////////////////////////
-	// GET PROPERTY ATTRIBUTES //
-	/////////////////////////////
-
-	Type get_property_type_in_file(Property);
-
-	int get_property_size(Property);
-
+#endif
 	///////////////
 	// AUDIT TAG //
 	///////////////
-
+#if 0
 	struct AuditTag { //112 bytes
 		uint64_t    time; // 8 bytes Windows 64-bit timestamp.
 		uint16_t    tag1[25];
 		uint16_t    tag2[25];
 		uint32_t    unknown;
 	};
-
+#endif
 	////////////
 	// HEADER //
 	////////////
 
+#if 0
 	struct Header {
 		magic_t     magic;
 		uint16_t    signature[9];
@@ -89,7 +74,7 @@ namespace org::openscience::ms::finnigan {
 		uint8_t     unknown6[60];
 		uint16_t    tag[514];
 	};
-
+#endif
 }
 
 #endif // FINNIGAN_TYPES

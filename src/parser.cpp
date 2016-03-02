@@ -24,13 +24,12 @@ int main(int argc, char* argv[]) {
 
 	// Create reader instance from factory.
 	Logger logger(std::wcerr);
-	Factory factory;
-	factory.add_observer(&logger);
-	Reader* reader = factory.make_reader(file);
-	if ( ! reader)
-		return NOT_A_FINNIGAN_FILE;
-	std::wcout << L"MAGIC = " << std::hex << boost::any_cast<int>(reader->get_property(Property::Magic)) << L"\n";
-	std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader->get_property(Property::Signature)) << L"\n";
+//	Factory factory;
+//	factory.add_observer(&logger);
+//	// TODO try/catch errors from Reader constructor.
+		Reader reader(file);
+//		std::wcout << L"MAGIC = " << std::hex << boost::any_cast<int>(reader.get_property(Property::Magic)) << L"\n";
+//		std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader.get_property(Property::Signature)) << L"\n";
 
 	return 0;
 }
