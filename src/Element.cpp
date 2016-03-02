@@ -22,12 +22,12 @@ void Element::add_observer(Observer* obs) {
 	this->observers.push_back(obs);
 }
 
-////////////////////
-// ADD PROPERTIES //
-////////////////////
+///////////////
+// ADD FIELD //
+///////////////
 
-void Element::add_field(Field::Id id, Field::Type type, size_t size) {
-	this->fields.push_back(Field(id, type, size));
+void Element::add_field(Field::Id id, const std::wstring& name, Field::Type type, size_t size) {
+	this->fields.push_back(Field(id, name, type, size));
 }
 
 /////////////////////

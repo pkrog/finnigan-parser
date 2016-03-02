@@ -30,12 +30,13 @@ namespace org::openscience::ms::finnigan {
 		};
 
 		Id                      id;
+		std::wstring            name;
 		Type                    type;
 		size_t                  size;
 		std::ifstream::pos_type pos;
 		boost::any              value;
 
-		Field(Id, Type, size_t);
+		Field(Id, const std::wstring&, Type, size_t);
 	};
 }
 
