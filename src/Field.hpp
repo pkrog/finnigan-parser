@@ -16,7 +16,7 @@ namespace org::openscience::ms::finnigan {
 
 		public:
 			Field(const std::wstring& name, std::type_index, const std::wstring& type_name, size_t);
-
+#if 0
 			bool is_unknown() const { return this->name.length() == 0; }
 
 			void set_value(boost::any v) { this->value = v; this->value_has_been_set = true; }
@@ -35,7 +35,7 @@ namespace org::openscience::ms::finnigan {
 
 			std::type_index get_type() const { return this->get_type(); }
 			bool operator == (const Field& f) const { return this->name == f.name; }
-
+#endif
 		private:
 			std::wstring            name;
 			std::type_index         type;

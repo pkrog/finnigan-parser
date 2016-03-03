@@ -1,5 +1,6 @@
 #include "Logger.hpp"
 #include "common.hpp"
+#include "Element.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
@@ -21,27 +22,27 @@ void Logger::errortag(const std::string& file) {
 /////////////////////////
 // FIELD VALUE CHANGED //
 /////////////////////////
-
+#if 0
 void Logger::field_value_changed(const Field& field) {
 	this->out << L"Field \"" << field.get_name() << L"\" is now " /*<< field.as_string()*/ << "\n";
 }
-
+#endif
 /////////////////////
-// NEW FIELD ADDED //
+// NEW CHILD ADDED //
 /////////////////////
 
-void Logger::new_field_added(const Field& field) {
-	this->out << L"Field \"" << field.get_name() << L"\" with type \"" << field.get_type_name() << L"\" has been added.\n";
+void Logger::new_child_added(const Element* child) {
+	this->out << L"Child \"" << child->get_name() << L"\" added.\n";
 }
 
 /////////////////////////////
 // FIELD POSITION COMPUTED //
 /////////////////////////////
-
+#if 0
 void Logger::field_pos_computed(const Field& field) {
 	this->out << L"Position of field \"" << field.get_name() << L"\" has been computed to \"" << field.get_pos() << L"\".\n";
 }
-
+#endif
 ////////////////////////
 // WRONG MAGIC NUMBER //
 ////////////////////////

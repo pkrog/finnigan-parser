@@ -29,10 +29,12 @@ int main(int argc, char* argv[]) {
 //	Factory factory;
 //	factory.add_observer(&logger);
 //	// TODO try/catch errors from Reader constructor.
-		Reader reader(file, &logger);
+		Reader reader(file);
+		reader.add_observer(&logger);
 //		std::wcout << L"MAGIC = " << std::hex << boost::any_cast<int>(reader.get_property(Property::Magic)) << L"\n";
 //		std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader.get_property(Property::Signature)) << L"\n";
-		Element *header = reader.get_field_value<Element*>(L"header");
+		Element *header = reader.get_child(L"header");
+		Element *magic = header->get_child(L"magic");
 	}
 	catch (Exception& e) {
 		std::wcerr << e.what() << L"\n";

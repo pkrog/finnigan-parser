@@ -22,7 +22,7 @@ Field::Field(const std::wstring& name, std::type_index type, const std::wstring&
 ///////////////////////////
 // GET BYTE SIZE IN FILE //
 ///////////////////////////
-
+#if 0
 std::ifstream::pos_type Field::get_byte_size_in_file() const {
 
 	// Basic types
@@ -41,3 +41,4 @@ std::ifstream::pos_type Field::get_byte_size_in_file() const {
 
 	throw UnknownType(this->type_name);
 }
+#endif

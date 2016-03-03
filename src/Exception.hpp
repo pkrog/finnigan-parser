@@ -10,16 +10,7 @@ namespace org::openscience::ms::finnigan {
 			virtual std::wstring what() const = 0;
 	};
 
-	class FieldNotFound : public Exception {
-		public:
-			FieldNotFound(const std::wstring& field_name) : field_name(field_name) {}
-			std::wstring what() const {
-				return std::wstring(L"Field \"") + this->field_name + L"\" not found.";
-			}
-		private:
-			std::wstring field_name;
-	};
-
+#if 0
 	class UnknownType : public Exception {
 		public:
 			UnknownType(const std::wstring& type_name) : type_name(type_name) {}
@@ -29,6 +20,7 @@ namespace org::openscience::ms::finnigan {
 		private:
 			std::wstring type_name;
 	};
+#endif
 }
 
 #endif // FINNIGAN_EXCEPTION

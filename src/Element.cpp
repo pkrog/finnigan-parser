@@ -1,7 +1,7 @@
 #include "Element.hpp"
 #include "common.hpp"
 #include "Observer.hpp"
-#include "Header.hpp"
+#include "Reader.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
@@ -9,34 +9,24 @@ using namespace org::openscience::ms::finnigan;
 // CONSTRUCTORS //
 //////////////////
 
-Element::Element(const std::string& file, std::shared_ptr<std::ifstream> ifs, std::ifstream::pos_type pos) :
-	file(file),
-	ifs(ifs),
-	start_pos(pos)
+Element::Element() :
+	pos(0)
 {
-}
-
-//////////////////
-// ADD OBSERVER //
-//////////////////
-
-void Element::add_observer(Observer* obs) {
-	this->observers.push_back(obs);
 }
 
 ///////////////
 // ADD FIELD //
 ///////////////
 
-void Element::add_field(const std::wstring& name, std::type_index type, const std::wstring& type_name, size_t size) {
+void Element::add_child(const std::wstring& name, Element* child) {
 
-	// Add field
-	Field field(name, type, type_name, size);
-	this->fields.push_back(field);
+	child->set_name(name);
+	this->children.push_back(child);
+	child->parent = this;
 
 	// Call observers
-	for (auto o: this->observers)
-		o->new_field_added(field);
+	for (auto o: this->get_top()->observers)
+		o->new_child_added(child);
 }
 
 /////////////////////
@@ -64,7 +54,7 @@ void Element::read_all_fields() {
 /////////////////////////
 // READ FIELD POSITION //
 /////////////////////////
-
+#if 0
 void Element::read_pos(Field& field) {
 	
 	std::ifstream::pos_type cur_pos = start_pos;
@@ -97,11 +87,11 @@ void Element::read_pos(Field& field) {
 //// TODO case FieldType::audittag: value = new AuditTag(this->ifs); 
 //	}
 }
-
+#endif
 //////////////////////
 // READ FIELD VALUE //
 //////////////////////
-
+#if 0
 void Element::read_value(Field& field)  {
 
 	// Basic types
@@ -119,13 +109,14 @@ void Element::read_value(Field& field)  {
 
 	throw UnknownType(field.get_type_name());
 }
-
+#endif
 //////////////////
 // READ CSTRING //
 //////////////////
-
+#if 0
 std::wstring Element::read_cstring(int size) {
 	uint16_t buf[size];
 	this->ifs->read(reinterpret_cast<char*>(buf), sizeof(buf));
 	return arr2wstring(buf);
 }
+#endif

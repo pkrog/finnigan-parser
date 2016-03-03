@@ -12,13 +12,10 @@ using namespace org::openscience::ms::finnigan;
 // CONSTRUCTOR //
 /////////////////
 
-Reader::Reader(const std::string& file, Observer *obs) :
-	Element(file, std::shared_ptr<std::ifstream>(new std::ifstream(file.c_str(), std::ios::in | std::ios_base::binary)), 0)
+Reader::Reader(const std::string& file) :
+	file(file),
+	ifs(file.c_str(), std::ios::in | std::ios_base::binary)
 {
-	if (obs)
-		this->add_observer(obs);
-
-	ADD_FIELD(L"header", Header, 1);
 	// TODO Test file existence (is it done by ifstream ?) --> throw exception
 
 	// TODO Try/catch any exception
@@ -28,4 +25,22 @@ Reader::Reader(const std::string& file, Observer *obs) :
 	// TODO Check signature
 	// TODO Get version and instantiate a new Factory that is set as member into Section instances.
 
+}
+
+/////////////////////
+// DEFINE CHILDREN //
+/////////////////////
+
+void Reader::define_children() {
+	if (this->children.empty()) {
+		this->add_child(L"header", new Header());
+	}
+}
+
+//////////////////
+// ADD OBSERVER //
+//////////////////
+
+void Reader::add_observer(Observer* obs) {
+	this->observers.push_back(obs);
 }

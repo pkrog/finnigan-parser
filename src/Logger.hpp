@@ -17,9 +17,9 @@ namespace org::openscience::ms::finnigan {
 //			virtual void wrong_signature(const std::string& file, const std::wstring& signature);
 //			virtual void file_version(const std::string& file, version_t version);
 
-			void field_value_changed(const Field&);
-			void new_field_added(const Field&);
-			 void field_pos_computed(const Field&);
+//			void field_value_changed(const Field&);
+			void new_child_added(const Element*);
+//			 void field_pos_computed(const Field&);
 
 		private:
 

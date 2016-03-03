@@ -9,7 +9,7 @@ namespace org::openscience::ms::finnigan {
 
 		public:
 
-			Header(const std::string& file, std::shared_ptr<std::ifstream>);
+			void define_children();
 	};
 }
 

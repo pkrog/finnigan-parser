@@ -14,66 +14,63 @@
 
 namespace org::openscience::ms::finnigan {
 
-	class Observer;
+	class Reader;
 
 	class Element {
 
 		public:
-
-			void add_observer(Observer*);
 		
-			/////////////////////
-			// GET FIELD VALUE //
-			/////////////////////
-
-			template<typename T> T get_field_value(const std::wstring& name) {
+			Element* get_child(const std::wstring& name) {
 				
-				Field f(name, typeid(char), L"char", 0); // Fake Field object used for searching.
+				this->define_children();
 
-				auto i = std::find(this->fields.begin(), this->fields.end(), f);
+				for (auto c: this->children)
+					if (c->name == name)
+						return c;
 
-				if (i == this->fields.end())
-					throw FieldNotFound(name);
-
-				if ( ! i->has_value()) {
-
-					if ( ! i->has_pos())
-						this->read_pos(*i);
-
-					this->read_value(*i);
-				}
-
-				return i->get_value<T>();
+				return nullptr;
 			}
 
-			std::ifstream::pos_type get_byte_size_in_file() { /* TODO */ return 0; }
+			virtual int get_byte_size_in_file() {
+				
+				int sz = 0;
+
+				this->define_children();
+
+				for (auto c: this->children)
+					sz += c->get_byte_size_in_file();
+
+				return sz;
+			}
+
+			std::wstring get_name() const { return this->name; }
 
 		protected:
 
-//			void read_all_fields();
+			virtual void define_children() {}
 
-			Element(const std::string& file, std::shared_ptr<std::ifstream>, std::ifstream::pos_type);
+			virtual Reader* get_top() {
+				return this->parent->get_top();
+			}
 
-			void add_field(const std::wstring& name, std::type_index type, const std::wstring& type_name, size_t);
-			void read_pos(Field&);
-			void read_value(Field&);
+			virtual std::ifstream& get_stream() {
+				return this->parent->get_stream();
+			}
 
-			std::list<Observer*> observers;
+			void set_name(const std::wstring& name) { this->name = name; }
 
-			boost::any read_field(const Field& field);
+			Element();
+
+			void add_child(const std::wstring& name, Element*);
+
+//			boost::any read_field(const Field& field);
 
 			std::wstring read_cstring(int size);
 
-			template<typename T> int read_int() {
-				T x;
-				this->ifs->read(reinterpret_cast<char*>(&x), sizeof(x));
-				return static_cast<int>(x);
-			}
-
-			std::string                     file;
-			std::shared_ptr<std::ifstream>  ifs;
-			std::vector<Field>              fields;
-			std::ifstream::pos_type         start_pos;
+			Element                         *parent;
+			std::vector<Element*>           children;
+			std::wstring                    name;
+			std::ifstream::pos_type         pos;
 	};
 }
 
