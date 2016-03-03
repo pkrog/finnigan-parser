@@ -14,7 +14,8 @@ using namespace org::openscience::ms::finnigan;
 
 Reader::Reader(const std::string& file) :
 	file(file),
-	ifs(file.c_str(), std::ios::in | std::ios_base::binary)
+	ifs(file.c_str(), std::ios::in | std::ios_base::binary),
+	Element(0)
 {
 	// TODO Test file existence (is it done by ifstream ?) --> throw exception
 

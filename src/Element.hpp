@@ -10,8 +10,6 @@
 #include <fstream>
 #include <algorithm>
 
-#define ADD_FIELD(name, type, size) this->add_field(name, typeid(type),  L###type, size)
-
 namespace org::openscience::ms::finnigan {
 
 	class Reader;
@@ -45,6 +43,8 @@ namespace org::openscience::ms::finnigan {
 
 			std::wstring get_name() const { return this->name; }
 
+			virtual int get_int() { throw WrongType(L"Integer"); }
+
 		protected:
 
 			virtual void define_children() {}
@@ -57,9 +57,29 @@ namespace org::openscience::ms::finnigan {
 				return this->parent->get_stream();
 			}
 
+			int64_t get_pos() {
+
+				if (this->pos < 0)
+					this->parent->compute_pos_of_child(this);
+
+				return this->pos;
+			}
+
+			void compute_pos_of_child(Element *child) {
+				int64_t pos = this->get_pos();
+				for (auto c: this->children) {
+					if (c->pos < 0)
+						c->pos = pos;
+					if (c == child)
+						break;
+					pos += c->get_byte_size_in_file();
+				}
+			}
+
 			void set_name(const std::wstring& name) { this->name = name; }
 
 			Element();
+			Element(int64_t);
 
 			void add_child(const std::wstring& name, Element*);
 
@@ -70,7 +90,9 @@ namespace org::openscience::ms::finnigan {
 			Element                         *parent;
 			std::vector<Element*>           children;
 			std::wstring                    name;
-			std::ifstream::pos_type         pos;
+
+		private:
+			int64_t                         pos;
 	};
 }
 

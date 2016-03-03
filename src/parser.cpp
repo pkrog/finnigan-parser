@@ -2,6 +2,7 @@
 #include "Logger.hpp"
 #include <iostream>
 #include "Reader.hpp"
+#include "Integer.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
@@ -31,10 +32,10 @@ int main(int argc, char* argv[]) {
 //	// TODO try/catch errors from Reader constructor.
 		Reader reader(file);
 		reader.add_observer(&logger);
-//		std::wcout << L"MAGIC = " << std::hex << boost::any_cast<int>(reader.get_property(Property::Magic)) << L"\n";
 //		std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader.get_property(Property::Signature)) << L"\n";
 		Element *header = reader.get_child(L"header");
 		Element *magic = header->get_child(L"magic");
+		std::wcout << L"MAGIC = " << std::hex << magic->get_int() << L"\n";
 	}
 	catch (Exception& e) {
 		std::wcerr << e.what() << L"\n";

@@ -10,17 +10,15 @@ namespace org::openscience::ms::finnigan {
 			virtual std::wstring what() const = 0;
 	};
 
-#if 0
-	class UnknownType : public Exception {
+	class WrongType : public Exception {
 		public:
-			UnknownType(const std::wstring& type_name) : type_name(type_name) {}
+			WrongType(const std::wstring& type_name) : type_name(type_name) {}
 			std::wstring what() const {
-				return std::wstring(L"Unknown type \"") + this->type_name + L"\".";
+				return std::wstring(L"Wrong type \"") + this->type_name + L"\".";
 			}
 		private:
 			std::wstring type_name;
 	};
-#endif
 }
 
 #endif // FINNIGAN_EXCEPTION

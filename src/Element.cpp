@@ -10,9 +10,11 @@ using namespace org::openscience::ms::finnigan;
 //////////////////
 
 Element::Element() :
-	pos(0)
+	pos(-1)
 {
 }
+
+Element::Element(int64_t pos) : pos(pos) {}
 
 ///////////////
 // ADD FIELD //
