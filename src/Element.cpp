@@ -17,12 +17,22 @@ Element::Element() :
 Element::Element(int64_t pos) : pos(pos) {}
 
 ///////////////
-// ADD FIELD //
+// ADD CHILD //
 ///////////////
 
 void Element::add_child(const std::wstring& name, Element* child) {
 
 	child->set_name(name);
+	this->children.push_back(child);
+	child->parent = this;
+
+	// Call observers
+	for (auto o: this->get_top()->observers)
+		o->new_child_added(child);
+}
+
+void Element::add_child(Element* child) {
+
 	this->children.push_back(child);
 	child->parent = this;
 

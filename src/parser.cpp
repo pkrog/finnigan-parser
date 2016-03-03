@@ -35,7 +35,11 @@ int main(int argc, char* argv[]) {
 //		std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader.get_property(Property::Signature)) << L"\n";
 		Element *header = reader.get_child(L"header");
 		Element *magic = header->get_child(L"magic");
+		Element *version = header->get_child(L"version");
+		Element *signature = header->get_child(L"signature");
 		std::wcout << L"MAGIC = " << std::hex << magic->get_int() << L"\n";
+		std::wcout << L"SIGNATURE = " << signature->get_string() << L"\n";
+		std::wcout << L"VERSION = " << std::dec << version->get_int() << L"\n";
 	}
 	catch (Exception& e) {
 		std::wcerr << e.what() << L"\n";

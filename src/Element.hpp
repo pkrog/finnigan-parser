@@ -44,6 +44,7 @@ namespace org::openscience::ms::finnigan {
 			std::wstring get_name() const { return this->name; }
 
 			virtual int get_int() { throw WrongType(L"Integer"); }
+			virtual std::wstring get_string() { throw WrongType(L"String"); }
 
 		protected:
 
@@ -82,6 +83,7 @@ namespace org::openscience::ms::finnigan {
 			Element(int64_t);
 
 			void add_child(const std::wstring& name, Element*);
+			void add_child(Element*);
 
 //			boost::any read_field(const Field& field);
 
