@@ -10,6 +10,7 @@ using namespace org::openscience::ms::finnigan;
 ///////////////
 
 #define NOT_A_FINNIGAN_FILE 1
+#define SOMETHING_WRONG_HAPPENED 100
 
 //////////
 // MAIN //
@@ -23,13 +24,20 @@ int main(int argc, char* argv[]) {
 	const std::string file(argv[1]);
 
 	// Create reader instance from factory.
-	Logger logger(std::wcerr);
+	try {
+		Logger logger(std::wcerr);
 //	Factory factory;
 //	factory.add_observer(&logger);
 //	// TODO try/catch errors from Reader constructor.
 		Reader reader(file, &logger);
 //		std::wcout << L"MAGIC = " << std::hex << boost::any_cast<int>(reader.get_property(Property::Magic)) << L"\n";
 //		std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader.get_property(Property::Signature)) << L"\n";
+		Element *header = reader.get_field_value<Element*>(L"header");
+	}
+	catch (Exception& e) {
+		std::wcerr << e.what() << L"\n";
+		return SOMETHING_WRONG_HAPPENED;
+	}
 
 	return 0;
 }

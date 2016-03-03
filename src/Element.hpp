@@ -2,11 +2,13 @@
 #define FINNIGAN_ELEMENT
 
 #include "Field.hpp"
+#include "Exception.hpp"
 #include <list>
 #include <vector>
 #include <map>
 #include <memory>
 #include <fstream>
+#include <algorithm>
 
 #define ADD_FIELD(name, type, size) this->add_field(name, typeid(type),  L###type, size)
 
@@ -20,17 +22,39 @@ namespace org::openscience::ms::finnigan {
 
 			void add_observer(Observer*);
 		
-			boost::any get_field(const std::wstring& name) {
-				return boost::any();
+			/////////////////////
+			// GET FIELD VALUE //
+			/////////////////////
+
+			template<typename T> T get_field_value(const std::wstring& name) {
+				
+				Field f(name, typeid(char), L"char", 0); // Fake Field object used for searching.
+
+				auto i = std::find(this->fields.begin(), this->fields.end(), f);
+
+				if (i == this->fields.end())
+					throw FieldNotFound(name);
+
+				if ( ! i->has_value()) {
+
+					if ( ! i->has_pos())
+						this->read_pos(*i);
+
+					this->read_value(*i);
+				}
+
+				return i->get_value<T>();
 			}
 
 		protected:
 
-			void read_all_fields();
+//			void read_all_fields();
 
 			Element(const std::string& file, std::shared_ptr<std::ifstream>, std::ifstream::pos_type);
 
 			void add_field(const std::wstring& name, std::type_index type, const std::wstring& type_name, size_t);
+			void read_pos(Field&);
+			void read_value(Field&);
 
 			std::list<Observer*> observers;
 
@@ -46,8 +70,8 @@ namespace org::openscience::ms::finnigan {
 
 			std::string                     file;
 			std::shared_ptr<std::ifstream>  ifs;
-			std::ifstream::pos_type         start_pos;
 			std::vector<Field>              fields;
+			std::ifstream::pos_type         start_pos;
 	};
 }
 

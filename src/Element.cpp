@@ -42,6 +42,7 @@ void Element::add_field(const std::wstring& name, std::type_index type, const st
 // READ ALL FIELDS //
 /////////////////////
 
+#if 0
 #include <iostream>
 void Element::read_all_fields() {
 	std::wcout << L"READ ALL FIELDS\n";
@@ -57,15 +58,30 @@ void Element::read_all_fields() {
 		}
 	}
 }
+#endif
 
-////////////////
-// READ FIELD //
-////////////////
+/////////////////////////
+// READ FIELD POSITION //
+/////////////////////////
 
-boost::any Element::read_field(const Field& field) {
-
-	boost::any value;
+void Element::read_pos(Field& field) {
 	
+	std::ifstream::pos_type cur_pos = start_pos;
+	// Compute position of all fields until this field
+	for (Field& f: this->fields) {
+
+		// Set missing position
+		if ( ! f.has_pos())
+			f.set_pos(cur_pos);
+
+		// Update current position
+		cur_pos += f.get_byte_size_in_file();
+
+		// Stop when the field has been found
+		if (f == field)
+			break;
+	}
+
 	// Read field from file
 //	switch(field.type) {
 //		case Field::Type::uint8:    value = read_int<uint8_t>();  break;
@@ -76,8 +92,13 @@ boost::any Element::read_field(const Field& field) {
 //		default: break;
 //// TODO case FieldType::audittag: value = new AuditTag(this->ifs); 
 //	}
+}
 
-	return value;
+//////////////////////
+// READ FIELD VALUE //
+//////////////////////
+
+void Element::read_value(Field& field)  {
 }
 
 //////////////////
