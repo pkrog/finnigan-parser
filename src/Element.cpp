@@ -1,6 +1,7 @@
 #include "Element.hpp"
 #include "common.hpp"
 #include "Observer.hpp"
+#include "Header.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
@@ -74,12 +75,15 @@ void Element::read_pos(Field& field) {
 		if ( ! f.has_pos())
 			f.set_pos(cur_pos);
 
+		// Stop when the field has been found
+		if (f == field) {
+			for (auto o: this->observers)
+				o->field_pos_computed(field);
+			break;
+		}
+
 		// Update current position
 		cur_pos += f.get_byte_size_in_file();
-
-		// Stop when the field has been found
-		if (f == field)
-			break;
 	}
 
 	// Read field from file
@@ -99,6 +103,21 @@ void Element::read_pos(Field& field) {
 //////////////////////
 
 void Element::read_value(Field& field)  {
+
+	// Basic types
+	this->ifs->seekg(field.get_pos());
+	if (field.get_type() == typeid(uint16_t)) {
+		field.set_value(this->read_int<uint16_t>());
+		return;
+	}
+
+	if (field.get_type() == typeid(Header)) {
+		field.set_value(new Header(this->file, this->ifs));
+		return;
+	}
+
+
+	throw UnknownType(field.get_type_name());
 }
 
 //////////////////

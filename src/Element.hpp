@@ -46,6 +46,8 @@ namespace org::openscience::ms::finnigan {
 				return i->get_value<T>();
 			}
 
+			std::ifstream::pos_type get_byte_size_in_file() { /* TODO */ return 0; }
+
 		protected:
 
 //			void read_all_fields();

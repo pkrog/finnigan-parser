@@ -34,6 +34,14 @@ void Logger::new_field_added(const Field& field) {
 	this->out << L"Field \"" << field.get_name() << L"\" with type \"" << field.get_type_name() << L"\" has been added.\n";
 }
 
+/////////////////////////////
+// FIELD POSITION COMPUTED //
+/////////////////////////////
+
+void Logger::field_pos_computed(const Field& field) {
+	this->out << L"Position of field \"" << field.get_name() << L"\" has been computed to \"" << field.get_pos() << L"\".\n";
+}
+
 ////////////////////////
 // WRONG MAGIC NUMBER //
 ////////////////////////

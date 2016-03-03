@@ -1,5 +1,6 @@
 #include "Field.hpp"
 #include "Exception.hpp"
+#include "Element.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
@@ -24,8 +25,19 @@ Field::Field(const std::wstring& name, std::type_index type, const std::wstring&
 
 std::ifstream::pos_type Field::get_byte_size_in_file() const {
 
+	// Basic types
 	if (this->type == typeid(uint16_t))
 		return 2;
+
+	// If it has a value, try to use it as a subclass of Element
+	if (this->has_value()) {
+		try {
+			Element *e = boost::any_cast<Element*>(this->value);
+			return e->get_byte_size_in_file();
+		}
+ 		catch (const boost::bad_any_cast&) {
+		}
+	}
 
 	throw UnknownType(this->type_name);
 }

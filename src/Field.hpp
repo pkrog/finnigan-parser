@@ -30,8 +30,10 @@ namespace org::openscience::ms::finnigan {
 			std::ifstream::pos_type get_byte_size_in_file() const;
 
 			std::wstring get_name() const { return this->name; }
+
 			std::wstring get_type_name() const { return this->type_name; }
 
+			std::type_index get_type() const { return this->get_type(); }
 			bool operator == (const Field& f) const { return this->name == f.name; }
 
 		private:
