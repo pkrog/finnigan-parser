@@ -4,39 +4,33 @@
 #include "types.hpp"
 #include <boost/any.hpp>
 #include <fstream>
+#include <typeindex>
 
 namespace org::openscience::ms::finnigan {
 
-	struct Field {
+	struct Char {
+		uint16_t c;
+	};
 
-		enum class Id {
-			Magic,
-			Signature,
-			Version,
-			AuditStart,
-			AuditEnd,
-			Tag,
+	class Field {
 
-			Unknown
-		};
+		public:
+			Field(const std::wstring& name, std::type_index, const std::wstring& type_name, size_t);
 
-		enum class Type {
-			uint8,
-			uint16,
-			uint32,
-			uint64,
-			cstring,
-			pstring
-		};
+			bool is_unknown() const { return this->name.length() == 0; }
 
-		Id                      id;
-		std::wstring            name;
-		Type                    type;
-		size_t                  size;
-		std::ifstream::pos_type pos;
-		boost::any              value;
+			void set_value(boost::any v) { this->value = v; }
 
-		Field(Id, const std::wstring&, Type, size_t);
+			std::wstring get_name() const { return this->name; }
+			std::wstring get_type_name() const { return this->type_name; }
+
+		private:
+			std::wstring            name;
+			std::type_index         type;
+			std::wstring            type_name; // For human control
+			size_t                  size;
+			std::ifstream::pos_type pos;
+			boost::any              value;
 	};
 }
 

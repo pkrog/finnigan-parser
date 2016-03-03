@@ -18,6 +18,7 @@ namespace org::openscience::ms::finnigan {
 //			virtual void file_version(const std::string& file, version_t version);
 
 			void field_value_changed(const Field&);
+			void new_field_added(const Field&);
 
 		private:
 

@@ -27,8 +27,15 @@ void Element::add_observer(Observer* obs) {
 // ADD FIELD //
 ///////////////
 
-void Element::add_field(Field::Id id, const std::wstring& name, Field::Type type, size_t size) {
-	this->fields.push_back(Field(id, name, type, size));
+void Element::add_field(const std::wstring& name, std::type_index type, const std::wstring& type_name, size_t size) {
+
+	// Add field
+	Field field(name, type, type_name, size);
+	this->fields.push_back(field);
+
+	// Call observers
+	for (auto o: this->observers)
+		o->new_field_added(field);
 }
 
 /////////////////////
@@ -37,14 +44,14 @@ void Element::add_field(Field::Id id, const std::wstring& name, Field::Type type
 
 #include <iostream>
 void Element::read_all_fields() {
-	std::wcout << L"COUCOU\n";
+	std::wcout << L"READ ALL FIELDS\n";
 	this->ifs->seekg(this->start_pos);
 	// TODO How to add a pos attr to Field and update it ? Can we access the Field instance in vector and modify it ?
 	// TODO Do the same for value ?
 	for (auto f: this->fields) {
 		auto v = this->read_field(f);
-		if (f.id < Field::Id::Unknown) {
-			f.value = v;
+		if ( ! f.is_unknown()) {
+			f.set_value(v);
 			for (auto o: this->observers)
 				o->field_value_changed(f);
 		}
@@ -60,15 +67,15 @@ boost::any Element::read_field(const Field& field) {
 	boost::any value;
 	
 	// Read field from file
-	switch(field.type) {
-		case Field::Type::uint8:    value = read_int<uint8_t>();  break;
-		case Field::Type::uint16:   value = read_int<uint16_t>(); break;
-		case Field::Type::uint32:   value = read_int<uint32_t>(); break;
-		case Field::Type::uint64:   value = read_int<uint64_t>(); break;
-		case Field::Type::cstring:  value = read_cstring(field.size); break;
-		default: break;
-// TODO case FieldType::audittag: value = new AuditTag(this->ifs); 
-	}
+//	switch(field.type) {
+//		case Field::Type::uint8:    value = read_int<uint8_t>();  break;
+//		case Field::Type::uint16:   value = read_int<uint16_t>(); break;
+//		case Field::Type::uint32:   value = read_int<uint32_t>(); break;
+//		case Field::Type::uint64:   value = read_int<uint64_t>(); break;
+//		case Field::Type::cstring:  value = read_cstring(field.size); break;
+//		default: break;
+//// TODO case FieldType::audittag: value = new AuditTag(this->ifs); 
+//	}
 
 	return value;
 }

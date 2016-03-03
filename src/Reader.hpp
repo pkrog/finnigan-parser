@@ -11,7 +11,7 @@ namespace org::openscience::ms::finnigan {
 
 		public:
 
-			Reader(const std::string& file);
+			Reader(const std::string& file, Observer *obs = nullptr);
 	};
 
 }

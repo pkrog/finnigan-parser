@@ -8,7 +8,7 @@
 #include <memory>
 #include <fstream>
 
-#define ADD_FIELD(id, type) this->add_field(Field::Id::id, L###id, Field::Type::type)
+#define ADD_FIELD(name, type, size) this->add_field(name, typeid(type),  L###type, size)
 
 namespace org::openscience::ms::finnigan {
 
@@ -20,7 +20,7 @@ namespace org::openscience::ms::finnigan {
 
 			void add_observer(Observer*);
 		
-			boost::any get_field(Field::Id id) {
+			boost::any get_field(const std::wstring& name) {
 				return boost::any();
 			}
 
@@ -30,9 +30,9 @@ namespace org::openscience::ms::finnigan {
 
 			Element(const std::string& file, std::shared_ptr<std::ifstream>, std::ifstream::pos_type);
 
-			std::list<Observer*> observers;
+			void add_field(const std::wstring& name, std::type_index type, const std::wstring& type_name, size_t);
 
-			void add_field(Field::Id, const std::wstring& name, Field::Type, size_t size = 1);
+			std::list<Observer*> observers;
 
 			boost::any read_field(const Field& field);
 

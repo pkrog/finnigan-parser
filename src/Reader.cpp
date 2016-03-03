@@ -1,4 +1,7 @@
 #include "Reader.hpp"
+#include "Header.hpp"
+#include "common.hpp"
+#include <iostream>
 
 using namespace org::openscience::ms::finnigan;
 
@@ -9,10 +12,13 @@ using namespace org::openscience::ms::finnigan;
 // CONSTRUCTOR //
 /////////////////
 
-Reader::Reader(const std::string& file) :
+Reader::Reader(const std::string& file, Observer *obs) :
 	Element(file, std::shared_ptr<std::ifstream>(new std::ifstream(file.c_str(), std::ios::in | std::ios_base::binary)), 0)
 {
-	ADD_Field(Header, section);
+	if (obs)
+		this->add_observer(obs);
+
+	ADD_FIELD(L"header", Header, 1);
 	// TODO Test file existence (is it done by ifstream ?) --> throw exception
 
 	// TODO Try/catch any exception
