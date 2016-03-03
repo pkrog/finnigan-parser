@@ -28,6 +28,7 @@ int main(int argc, char* argv[]) {
 //	factory.add_observer(&logger);
 //	// TODO try/catch errors from Reader constructor.
 		Reader reader(file);
+		reader.add_observer(&logger);
 //		std::wcout << L"MAGIC = " << std::hex << boost::any_cast<int>(reader.get_property(Property::Magic)) << L"\n";
 //		std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader.get_property(Property::Signature)) << L"\n";
 

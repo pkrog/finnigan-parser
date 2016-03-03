@@ -1,5 +1,6 @@
 #include "Element.hpp"
 #include "common.hpp"
+#include "Observer.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
@@ -34,14 +35,19 @@ void Element::add_field(Field::Id id, const std::wstring& name, Field::Type type
 // READ ALL FIELDS //
 /////////////////////
 
+#include <iostream>
 void Element::read_all_fields() {
+	std::wcout << L"COUCOU\n";
 	this->ifs->seekg(this->start_pos);
 	// TODO How to add a pos attr to Field and update it ? Can we access the Field instance in vector and modify it ?
 	// TODO Do the same for value ?
 	for (auto f: this->fields) {
 		auto v = this->read_field(f);
-		if (f.id < Field::Id::Unknown)
+		if (f.id < Field::Id::Unknown) {
 			f.value = v;
+			for (auto o: this->observers)
+				o->field_value_changed(f);
+		}
 	}
 }
 

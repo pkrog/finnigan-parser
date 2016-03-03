@@ -12,6 +12,7 @@ using namespace org::openscience::ms::finnigan;
 Reader::Reader(const std::string& file) :
 	Element(file, std::shared_ptr<std::ifstream>(new std::ifstream(file.c_str(), std::ios::in | std::ios_base::binary)), 0)
 {
+	ADD_Field(Header, section);
 	// TODO Test file existence (is it done by ifstream ?) --> throw exception
 
 	// TODO Try/catch any exception

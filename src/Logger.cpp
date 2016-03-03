@@ -18,6 +18,14 @@ void Logger::errortag(const std::string& file) {
 	this->out << L"Error in file \"" << arr2wstring(file.c_str()) << "\".";
 }
 
+/////////////////////
+// SET FIELD VALUE //
+/////////////////////
+
+void Logger::field_value_changed(const Field& field) {
+	this->out << L"Field \"" << field.name << L"\" is now " /*<< field.as_string()*/ << "\n";
+}
+
 ////////////////////////
 // WRONG MAGIC NUMBER //
 ////////////////////////
