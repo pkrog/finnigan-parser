@@ -23,8 +23,19 @@
 #define FEN_SAMPLE_WEIGHT       L"sample_weight"
 #define FEN_SAMPLE_VOLUME       L"sample_volume"
 #define FEN_INT_STD_AMOUNT      L"international_standard_amount"
-#define FEN_DILUTION_FACTOR     L"dilution_factot"
+#define FEN_DILUTION_FACTOR     L"dilution_factor"
 #define FEN_VIAL                L"vial"
+#define FEN_ID                  L"id"
+#define FEN_COMMENT             L"comment"
+#define FEN_USER_LABEL_1        L"user_label_1"
+#define FEN_USER_LABEL_2        L"user_label_2"
+#define FEN_USER_LABEL_3        L"user_label_3"
+#define FEN_USER_LABEL_4        L"user_label_4"
+#define FEN_USER_LABEL_5        L"user_label_5"
+#define FEN_INST_METHOD         L"inst_method"
+#define FEN_PROC_METHOD         L"proc_method"
+#define FEN_FILENAME            L"filename"
+#define FEN_PATH                L"path"
 
 ///////////////
 // CONSTANTS //
