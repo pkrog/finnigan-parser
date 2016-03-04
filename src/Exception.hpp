@@ -12,11 +12,11 @@ namespace org::openscience::ms::finnigan {
 			virtual std::wstring what() const = 0;
 	};
 
-	class WrongType : public Exception {
+	class CannotConvertToType : public Exception {
 		public:
-			WrongType(const std::wstring& type_name) : type_name(type_name) {}
+			CannotConvertToType(const std::wstring& type_name) : type_name(type_name) {}
 			std::wstring what() const {
-				return std::wstring(L"Wrong type \"") + this->type_name + L"\".";
+				return std::wstring(L"Cannot convert internal value to type \"") + this->type_name + L"\".";
 			}
 		private:
 			std::wstring type_name;

@@ -2,6 +2,7 @@
 #define FINNIGAN_ELEMENT
 
 #include "Exception.hpp"
+#include "Observer.hpp"
 #include <list>
 #include <vector>
 #include <map>
@@ -42,8 +43,10 @@ namespace org::openscience::ms::finnigan {
 
 			std::wstring get_name() const { return this->name; }
 
-			virtual int get_int() { throw WrongType(L"Integer"); }
-			virtual std::wstring get_string() { throw WrongType(L"String"); }
+			virtual int get_int() const { throw CannotConvertToType(L"int"); }
+			virtual double get_double() const { throw CannotConvertToType(L"float"); }
+			virtual std::wstring get_string() const { throw CannotConvertToType(L"string"); }
+			virtual void write(std::wostream&) const {}
 
 		protected:
 
@@ -55,6 +58,10 @@ namespace org::openscience::ms::finnigan {
 
 			virtual std::ifstream& get_stream() {
 				return this->parent->get_stream();
+			}
+
+			virtual std::list<Observer*>* get_observers() {
+				return this->parent->get_observers();
 			}
 
 			int64_t get_pos() {
@@ -95,6 +102,12 @@ namespace org::openscience::ms::finnigan {
 		private:
 			int64_t                         pos;
 	};
+
+	////////////////////////////
+	// OUTPUT STREAM OPERATOR //
+	////////////////////////////
+
+	std::wostream& operator << (std::wostream& os, const Element& e);
 }
 
 #endif // FINNIGAN_ELEMENT

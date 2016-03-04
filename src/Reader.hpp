@@ -23,6 +23,7 @@ namespace org::openscience::ms::finnigan {
 
 			std::ifstream& get_stream() { return this->ifs; }
 			Reader* get_top() { return this; }
+			std::list<Observer*>* get_observers() { return &(this->observers); }
 			void define_children();
 
 		private:

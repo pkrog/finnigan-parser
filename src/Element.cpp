@@ -122,13 +122,12 @@ void Element::read_value(Field& field)  {
 	throw UnknownType(field.get_type_name());
 }
 #endif
-//////////////////
-// READ CSTRING //
-//////////////////
-#if 0
-std::wstring Element::read_cstring(int size) {
-	uint16_t buf[size];
-	this->ifs->read(reinterpret_cast<char*>(buf), sizeof(buf));
-	return arr2wstring(buf);
+
+////////////////////////////
+// OUTPUT STREAM OPERATOR //
+////////////////////////////
+
+std::wostream& org::openscience::ms::finnigan::operator << (std::wostream& os, const Element& e) {
+	e.write(os);
+	return os;
 }
-#endif

@@ -1,5 +1,6 @@
 #include "Reader.hpp"
 #include "Header.hpp"
+#include "SequencerRow.hpp"
 #include "common.hpp"
 #include <iostream>
 
@@ -46,6 +47,9 @@ Reader::Reader(const std::string& file, Observer *obs) :
 void Reader::define_children() {
 	if (this->children.empty()) {
 		this->add_child(FEN_HEADER, new Header());
+		this->add_child(FEN_SEQUENCER_ROW, new SequencerRow());
+		// AutoSamplerInfo
+		// RawFileInfo --> this is where are the adresses of the data.
 	}
 }
 

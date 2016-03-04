@@ -13,6 +13,7 @@ namespace org::openscience::ms::finnigan {
 
 			//virtual void field_value_changed(const Field&) {}
 			virtual void new_child_added(const Element*) {}
+			virtual void data_read(const Element*) {}
 			//virtual void field_pos_computed(const Field&) {}
 //			virtual void wrong_magic_number(const std::string& file, int magic) {}
 

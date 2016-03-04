@@ -19,6 +19,7 @@ namespace org::openscience::ms::finnigan {
 
 //			void field_value_changed(const Field&);
 			void new_child_added(const Element*);
+			void data_read(const Element*);
 //			 void field_pos_computed(const Field&);
 
 		private:

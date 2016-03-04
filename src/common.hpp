@@ -9,9 +9,22 @@
 ///////////////////
 
 // FEN = Finnigan Element Name
-#define FEN_MAGIC       L"magic"
-#define FEN_SIGNATURE   L"signature"
-#define FEN_HEADER      L"header"
+#define FEN_MAGIC               L"magic"
+#define FEN_SIGNATURE           L"signature"
+#define FEN_HEADER              L"header"
+#define FEN_SEQUENCER_ROW       L"sequencer_row"
+#define FEN_INJECTION           L"injection"
+#define FEN_VERSION             L"version"
+#define FEN_AUDIT_START         L"audit_start"
+#define FEN_AUDIT_END           L"audit_end"
+#define FEN_TAG                 L"tag"
+#define FEN_ROW_NUMBER          L"row_number"
+#define FEN_INJECTION_VOLUME    L"injection_volume"
+#define FEN_SAMPLE_WEIGHT       L"sample_weight"
+#define FEN_SAMPLE_VOLUME       L"sample_volume"
+#define FEN_INT_STD_AMOUNT      L"international_standard_amount"
+#define FEN_DILUTION_FACTOR     L"dilution_factot"
+#define FEN_VIAL                L"vial"
 
 ///////////////
 // CONSTANTS //
