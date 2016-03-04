@@ -2,6 +2,8 @@
 #define FINNIGAN_EXCEPTION 
 
 #include <string>
+#include <sstream>
+#include "common.hpp"
 
 namespace org::openscience::ms::finnigan {
 
@@ -18,6 +20,19 @@ namespace org::openscience::ms::finnigan {
 			}
 		private:
 			std::wstring type_name;
+	};
+
+	class WrongMagicNumber : public Exception {
+		public:
+			WrongMagicNumber(const std::string& file, int magic) : file(file), magic(magic) {}
+			std::wstring what() const {
+				std::wstringstream wss;
+				wss << L"File \"" << arr2wstring(file.c_str()) << L"\" is not a Finnigan file or has been corrupted. Its magic number is " << std::hex << magic << L" instead of " << FINNIGAN_MAGIC << L"\".";
+				return wss.str();
+			}
+		private:
+			std::string file;
+			int magic;
 	};
 }
 

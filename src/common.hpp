@@ -4,8 +4,8 @@
 #include <string>
 #include <boost/any.hpp>
 
-#define MAGIC 0xa101
-#define SIGNATURE L"Finnigan"
+#define FINNIGAN_MAGIC 0xa101
+#define FINNIGAN_SIGNATURE L"Finnigan"
 
 namespace org::openscience::ms::finnigan {
 

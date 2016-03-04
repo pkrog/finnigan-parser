@@ -26,19 +26,7 @@ int main(int argc, char* argv[]) {
 	// Create reader instance from factory.
 	try {
 		Logger logger(std::wcerr);
-//	Factory factory;
-//	factory.add_observer(&logger);
-//	// TODO try/catch errors from Reader constructor.
-		Reader reader(file);
-		reader.add_observer(&logger);
-//		std::wcout << L"SIGNATURE = " << boost::any_cast<std::wstring>(reader.get_property(Property::Signature)) << L"\n";
-		Element *header = reader.get_child(L"header");
-		Element *magic = header->get_child(L"magic");
-		Element *version = header->get_child(L"version");
-		Element *signature = header->get_child(L"signature");
-		std::wcout << L"MAGIC = " << std::hex << magic->get_int() << L"\n";
-		std::wcout << L"SIGNATURE = " << signature->get_string() << L"\n";
-		std::wcout << L"VERSION = " << std::dec << version->get_int() << L"\n";
+		Reader reader(file, &logger);
 	}
 	catch (Exception& e) {
 		std::wcerr << e.what() << L"\n";

@@ -12,17 +12,23 @@ using namespace org::openscience::ms::finnigan;
 // CONSTRUCTOR //
 /////////////////
 
-Reader::Reader(const std::string& file) :
+Reader::Reader(const std::string& file, Observer *obs) :
 	file(file),
 	ifs(file.c_str(), std::ios::in | std::ios_base::binary),
 	Element(0)
 {
+	// Set observer
+	if (obs)
+		this->add_observer(obs);
+
 	// TODO Test file existence (is it done by ifstream ?) --> throw exception
 
 	// TODO Try/catch any exception
-	// TODO Read header only when needed
 
-	// TODO Check magic number
+	// Check magic number
+	int magic = this->get_child(L"header")->get_child(L"magic")->get_int();
+	if (magic != FINNIGAN_MAGIC)
+		throw WrongMagicNumber(file, magic);
 	// TODO Check signature
 	// TODO Get version and instantiate a new Factory that is set as member into Section instances.
 
