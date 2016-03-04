@@ -1,7 +1,6 @@
 #ifndef FINNIGAN_ELEMENT
 #define FINNIGAN_ELEMENT
 
-#include "Field.hpp"
 #include "Exception.hpp"
 #include <list>
 #include <vector>

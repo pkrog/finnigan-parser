@@ -1,4 +1,3 @@
-#include "Factory.hpp"
 #include "Logger.hpp"
 #include <iostream>
 #include "Reader.hpp"
