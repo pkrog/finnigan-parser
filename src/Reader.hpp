@@ -19,6 +19,8 @@ namespace org::openscience::ms::finnigan {
 
 			void add_observer(Observer*);
 
+			virtual std::wstring get_path() const { return L""; }
+
 		protected:
 
 			std::ifstream& get_stream() { return this->ifs; }

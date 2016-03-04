@@ -16,7 +16,7 @@ Logger::Logger(std::wostream& o) : out(o) {
 /////////////////////
 
 void Logger::new_child_added(const Element* child) {
-	this->out << L"Child \"" << child->get_name() << L"\" added.\n";
+	this->out << L"Add \"" << child->get_path() << L"\".\n";
 }
 
 ///////////////
@@ -25,5 +25,5 @@ void Logger::new_child_added(const Element* child) {
 //
 void Logger::data_read(const Element *elem) {
 
-	this->out << L"Element \"" << elem->get_name() << L"\" read : " << *elem << L".\n";
+	this->out << L"Read \"" << elem->get_path() << L"\" : " << *elem << L".\n";
 }
