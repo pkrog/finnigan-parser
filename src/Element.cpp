@@ -53,6 +53,14 @@ void Element::read() {
 		c->read();
 }
 
+/////////////////
+// GET VERSION //
+/////////////////
+
+int Element::get_version() {
+	return this->get_top()->get_child(FEN_HEADER)->get_child(FEN_VERSION)->get_int();
+}
+
 ////////////////////////////
 // OUTPUT STREAM OPERATOR //
 ////////////////////////////

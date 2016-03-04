@@ -49,6 +49,7 @@ namespace org::openscience::ms::finnigan {
 			virtual void write(std::wostream&) const {}
 
 			virtual void read();
+			int get_version();
 
 			virtual std::wstring get_path() const {
 				return this->parent->get_path() + L"/" + (this->get_name().empty() ? L"???" : this->get_name());

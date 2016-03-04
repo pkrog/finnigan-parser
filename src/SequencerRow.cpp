@@ -1,6 +1,7 @@
 #include "SequencerRow.hpp"
 #include "InjectionData.hpp"
 #include "PString.hpp"
+#include "Integer.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
@@ -24,5 +25,30 @@ void SequencerRow::define_children() {
 		this->add_child(FEN_PROC_METHOD,     new PString());
 		this->add_child(FEN_FILENAME,        new PString());
 		this->add_child(FEN_PATH,            new PString());
+
+		if (this->get_version() >= 57) {
+			this->add_child(FEN_VIAL,            new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new Integer<uint32_t>()); // Or PString ?
+		}
+
+		if (this->get_version() >= 60) {
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+			this->add_child(                     new PString());
+		}
 	}
 }
