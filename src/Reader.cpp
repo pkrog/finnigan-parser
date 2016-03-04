@@ -26,10 +26,15 @@ Reader::Reader(const std::string& file, Observer *obs) :
 	// TODO Try/catch any exception
 
 	// Check magic number
-	int magic = this->get_child(L"header")->get_child(L"magic")->get_int();
+	int magic = this->get_child(FEN_HEADER)->get_child(FEN_MAGIC)->get_int();
 	if (magic != FINNIGAN_MAGIC)
 		throw WrongMagicNumber(file, magic);
-	// TODO Check signature
+
+	// Check signature
+	std::wstring sig = this->get_child(FEN_HEADER)->get_child(FEN_SIGNATURE)->get_string();
+	if (sig != FINNIGAN_SIGNATURE)
+		throw WrongSignature(file, sig);
+
 	// TODO Get version and instantiate a new Factory that is set as member into Section instances.
 
 }
@@ -40,7 +45,7 @@ Reader::Reader(const std::string& file, Observer *obs) :
 
 void Reader::define_children() {
 	if (this->children.empty()) {
-		this->add_child(L"header", new Header());
+		this->add_child(FEN_HEADER, new Header());
 	}
 }
 

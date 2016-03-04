@@ -4,8 +4,25 @@
 #include <string>
 #include <boost/any.hpp>
 
-#define FINNIGAN_MAGIC 0xa101
-#define FINNIGAN_SIGNATURE L"Finnigan"
+///////////////////
+// ELEMENT NAMES //
+///////////////////
+
+// FEN = Finnigan Element Name
+#define FEN_MAGIC       L"magic"
+#define FEN_SIGNATURE   L"signature"
+#define FEN_HEADER      L"header"
+
+///////////////
+// CONSTANTS //
+///////////////
+
+#define FINNIGAN_MAGIC      0xa101
+#define FINNIGAN_SIGNATURE  L"Finnigan"
+
+////////////////////
+// HELP FUNCTIONS //
+////////////////////
 
 namespace org::openscience::ms::finnigan {
 

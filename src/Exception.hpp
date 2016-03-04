@@ -27,12 +27,25 @@ namespace org::openscience::ms::finnigan {
 			WrongMagicNumber(const std::string& file, int magic) : file(file), magic(magic) {}
 			std::wstring what() const {
 				std::wstringstream wss;
-				wss << L"File \"" << arr2wstring(file.c_str()) << L"\" is not a Finnigan file or has been corrupted. Its magic number is " << std::hex << magic << L" instead of " << FINNIGAN_MAGIC << L"\".";
+				wss << L"File \"" << arr2wstring(file.c_str()) << L"\" is not a Finnigan file or has been corrupted. Its magic number is " << std::hex << std::showbase << magic << L" instead of " << FINNIGAN_MAGIC << L".";
 				return wss.str();
 			}
 		private:
 			std::string file;
 			int magic;
+	};
+
+	class WrongSignature : public Exception {
+		public:
+			WrongSignature(const std::string& file, const std::wstring& signature) : file(file), signature(signature) {}
+			std::wstring what() const {
+				std::wstringstream wss;
+				wss << L"File \"" << arr2wstring(file.c_str()) << L"\" is not a Finnigan file or has been corrupted. Its signature is \"" << signature << L"\" instead of \"" << FINNIGAN_SIGNATURE << L"\".";
+				return wss.str();
+			}
+		private:
+			std::string file;
+			std::wstring signature;
 	};
 }
 
