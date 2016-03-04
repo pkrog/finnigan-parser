@@ -18,7 +18,7 @@ namespace org::openscience::ms::finnigan {
 
 		protected:
 
-			int get_byte_size_in_file() { return sizeof(uint32_t) + sizeof(uint16_t) * this->length; }
+			int get_byte_size_in_file() const { const_cast<PString*>(this)->read(); return sizeof(uint32_t) + sizeof(uint16_t) * this->length; }
 
 			void read() {
 				if ( ! this->has_been_read) {

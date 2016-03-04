@@ -14,7 +14,7 @@ namespace org::openscience::ms::finnigan {
 
 		protected:
 
-			int get_byte_size_in_file() { return sizeof(T) * this->length; }
+			int get_byte_size_in_file() const { return sizeof(T) * this->length; }
 
 			void read() {
 				this->get_stream().seekg(this->get_pos());

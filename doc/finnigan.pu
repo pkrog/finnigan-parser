@@ -1,0 +1,26 @@
+@startuml
+'scale 1600 width
+hide empty members
+
+abstract class Element
+Element <|-- Reader
+Element <|-- Integer
+Element <|-- IntegerArray
+Element <|-- Float
+Element <|-- CString
+Element <|-- PString
+Element <|-- Header
+Element <|-- AuditTag
+Element <|-- SequencerRow
+Element <|-- InjectionData
+
+abstract class Exception
+
+abstract class Observer
+Observer <|-- Logger
+
+' Relations
+Element "1,parent" <--> "*,child" Element
+Reader "*" --> "*" Observer
+
+@enduml

@@ -42,7 +42,7 @@ void Reader::define_children() {
 		this->add_child(FEN_HEADER, new Header());
 		this->add_child(FEN_SEQUENCER_ROW, new SequencerRow());
 		// AutoSamplerInfo
-		// RawFileInfo --> this is where are the adresses of the data.
+		// RawFileInfo --> this is where are the addresses of the data.
 	}
 }
 

@@ -5,10 +5,7 @@
 #include "Observer.hpp"
 #include <list>
 #include <vector>
-#include <map>
-#include <memory>
 #include <fstream>
-#include <algorithm>
 
 namespace org::openscience::ms::finnigan {
 
@@ -18,28 +15,7 @@ namespace org::openscience::ms::finnigan {
 
 		public:
 		
-			Element* get_child(const std::wstring& name) {
-				
-				this->define_children();
-
-				for (auto c: this->children)
-					if (c->name == name)
-						return c;
-
-				return nullptr;
-			}
-
-			virtual int get_byte_size_in_file() {
-				
-				int sz = 0;
-
-				this->define_children();
-
-				for (auto c: this->children)
-					sz += c->get_byte_size_in_file();
-
-				return sz;
-			}
+			Element* get_child(const std::wstring& name);
 
 			std::wstring get_name() const { return this->name; }
 
@@ -57,57 +33,32 @@ namespace org::openscience::ms::finnigan {
 
 		protected:
 
-			virtual void define_children() {}
-
-			virtual Reader* get_top() {
-				return this->parent->get_top();
-			}
-
-			virtual std::ifstream& get_stream() {
-				return this->parent->get_stream();
-			}
-
-			virtual std::list<Observer*>* get_observers() {
-				return this->parent->get_observers();
-			}
-
-			int64_t get_pos() {
-
-				if (this->pos < 0)
-					this->parent->compute_pos_of_child(this);
-
-				return this->pos;
-			}
-
-			void compute_pos_of_child(Element *child) {
-				int64_t pos = this->get_pos();
-				for (auto c: this->children) {
-					if (c->pos < 0)
-						c->pos = pos;
-					if (c == child)
-						break;
-					pos += c->get_byte_size_in_file();
-				}
-			}
-
-			void set_name(const std::wstring& name) { this->name = name; }
-
 			Element();
-			Element(int64_t);
+			Element(int64_t pos);
 
+			// Children
+			virtual void define_children() {}
 			void add_child(const std::wstring& name, Element*);
 			void add_child(Element*);
 
-//			boost::any read_field(const Field& field);
+			// Top object (Reader)
+			virtual Reader* get_top() { return this->parent->get_top(); }
+			virtual std::ifstream& get_stream() { return this->parent->get_stream(); }
+			virtual std::list<Observer*>* get_observers() { return this->parent->get_observers(); }
 
-			std::wstring read_cstring(int size);
+			// Position and size
+			int64_t get_pos();
+			virtual int get_byte_size_in_file() const;
+			void compute_pos_of_child(Element *child);
+
+			void set_name(const std::wstring& name) { this->name = name; }
 
 			Element                         *parent;
 			std::vector<Element*>           children;
-			std::wstring                    name;
 
 		private:
 			int64_t                         pos;
+			std::wstring                    name;
 	};
 
 	////////////////////////////

@@ -18,7 +18,7 @@ namespace org::openscience::ms::finnigan {
 
 		protected:
 
-			int get_byte_size_in_file() { return sizeof(uint16_t) * this->length; }
+			int get_byte_size_in_file() const { return sizeof(uint16_t) * this->length; }
 
 			void read() {
 				if ( ! this->has_been_read) {
