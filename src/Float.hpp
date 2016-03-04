@@ -10,6 +10,8 @@ namespace org::openscience::ms::finnigan {
 		public:
 			double get_double() const { const_cast<Float*>(this)->read(); return this->value; }
 
+			void write(std::wostream& os) const { os << this->get_double(); }
+
 		protected:
 
 			int get_byte_size_in_file() { return sizeof(T); }

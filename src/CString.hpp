@@ -14,6 +14,8 @@ namespace org::openscience::ms::finnigan {
 
 			std::wstring get_string() const { const_cast<CString*>(this)->read(); return this->value; }
 
+			void write(std::wostream& os) const { os << this->get_string(); }
+
 		protected:
 
 			int get_byte_size_in_file() { return sizeof(uint16_t) * this->length; }

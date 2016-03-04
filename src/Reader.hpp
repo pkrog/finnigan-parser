@@ -11,8 +11,6 @@ namespace org::openscience::ms::finnigan {
 
 	class Reader : public Element {
 
-		friend class Element;
-
 		public:
 
 			Reader(const std::string& file, Observer* obs = nullptr);

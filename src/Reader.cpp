@@ -22,10 +22,6 @@ Reader::Reader(const std::string& file, Observer *obs) :
 	if (obs)
 		this->add_observer(obs);
 
-	// TODO Test file existence (is it done by ifstream ?) --> throw exception
-
-	// TODO Try/catch any exception
-
 	// Check magic number
 	int magic = this->get_child(FEN_HEADER)->get_child(FEN_MAGIC)->get_int();
 	if (magic != FINNIGAN_MAGIC)
@@ -35,9 +31,6 @@ Reader::Reader(const std::string& file, Observer *obs) :
 	std::wstring sig = this->get_child(FEN_HEADER)->get_child(FEN_SIGNATURE)->get_string();
 	if (sig != FINNIGAN_SIGNATURE)
 		throw WrongSignature(file, sig);
-
-	// TODO Get version and instantiate a new Factory that is set as member into Section instances.
-
 }
 
 /////////////////////
