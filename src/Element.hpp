@@ -48,6 +48,11 @@ namespace org::openscience::ms::finnigan {
 			virtual std::wstring get_string() const { throw CannotConvertToType(L"string"); }
 			virtual void write(std::wostream&) const {}
 
+			virtual void read() {
+				for (auto c: this->children)
+					c->read();
+			}
+
 		protected:
 
 			virtual void define_children() {}

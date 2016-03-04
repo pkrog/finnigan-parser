@@ -12,21 +12,27 @@ namespace org::openscience::ms::finnigan {
 
 			CString(unsigned int length) : length(length) {}
 
-			std::wstring get_string() { this->read(); return this->value; }
+			std::wstring get_string() const { const_cast<CString*>(this)->read(); return this->value; }
 
 		protected:
 
 			int get_byte_size_in_file() { return sizeof(uint16_t) * this->length; }
 
 			void read() {
-				this->get_stream().seekg(this->get_pos());
-				uint16_t x[this->length];
-				this->get_stream().read(reinterpret_cast<char*>(&x), sizeof(uint16_t) * this->length);
-				this->value = arr2wstring(x);
+				if ( ! this->has_been_read) {
+					this->get_stream().seekg(this->get_pos());
+					uint16_t x[this->length];
+					this->get_stream().read(reinterpret_cast<char*>(&x), sizeof(uint16_t) * this->length);
+					this->value = arr2wstring(x);
+					this->has_been_read = true;
+
+					for(auto o: *(this->get_observers()))
+						o->data_read(this);
+				}
 			}
 
 		private:
-
+			bool has_been_read = false;
 			unsigned int length;
 			std::wstring value;
 	};

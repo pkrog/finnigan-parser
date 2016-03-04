@@ -27,6 +27,7 @@ int main(int argc, char* argv[]) {
 	try {
 		Logger logger(std::wcerr);
 		Reader reader(file, &logger);
+		reader.read();
 	}
 	catch (Exception& e) {
 		std::wcerr << e.what() << L"\n";

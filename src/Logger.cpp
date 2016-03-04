@@ -25,5 +25,5 @@ void Logger::new_child_added(const Element* child) {
 //
 void Logger::data_read(const Element *elem) {
 
-	this->out << L"Element \"" << elem->get_name() << L"\" has been read from file : " << *elem << L".\n";
+	this->out << L"Element \"" << elem->get_name() << L"\" read : " << *elem << L".\n";
 }
