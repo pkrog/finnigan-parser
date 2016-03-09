@@ -35,6 +35,7 @@
 #define FEN_INST_METHOD         L"inst_method"
 #define FEN_PROC_METHOD         L"proc_method"
 #define FEN_FILENAME            L"filename"
+#define FEN_INFO_PREAMBLE       L"info_preamble"
 #define FEN_PATH                L"path"
 #define FEN_METHOD_FILE_PRESENT L"method_file_present"
 #define FEN_YEAR                L"year"
