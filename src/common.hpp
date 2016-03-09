@@ -36,6 +36,17 @@
 #define FEN_PROC_METHOD         L"proc_method"
 #define FEN_FILENAME            L"filename"
 #define FEN_PATH                L"path"
+#define FEN_METHOD_FILE_PRESENT L"method_file_present"
+#define FEN_YEAR                L"year"
+#define FEN_MONTH               L"month"
+#define FEN_WEEKDAY             L"weekday"
+#define FEN_DAY                 L"day"
+#define FEN_HOUR                L"hour"
+#define FEN_MINUTE              L"minute"
+#define FEN_MILLISECOND         L"millisecond"
+#define FEN_DATA_ADRESS         L"data_address"
+#define FEN_RUN_HEADER_ADDR     L"run_header_address"
+#define FEN_PADDING             L"padding"
 
 ///////////////
 // CONSTANTS //
