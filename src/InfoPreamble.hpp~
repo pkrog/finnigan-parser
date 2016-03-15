@@ -1,5 +1,5 @@
-#ifndef FINNINGAN_INFO_PREAMBLE
-#define FINNINGAN_INFO_PREAMBLE
+#ifndef FEN_INFO_PREAMBLE
+#define FEN_INFO_PREAMBLE
 
 #include "Element.hpp"
 

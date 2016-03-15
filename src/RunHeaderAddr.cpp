@@ -1,4 +1,4 @@
-#include "RunHeaderAddr.hpp"
+#include "RunHeaderAddr.cpp"
 #include "Integer.hpp"
 
 using namespace org::openscience::ms::finnigan;

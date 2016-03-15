@@ -29,7 +29,9 @@ void InfoPreamble::define_children() {
             this->add_child(FEN_N_CONTROLLERS,            new Integer<uint32_t>());
             //The number of cotrollers is read directly.
             int nController=this->get_child(FEN_N_CONTROLLERS)->get_int();
+            //Adding the correct number of child depending of the version.
             this->add_child(FEN_N_CONTROLLERS2,           new Integer<uint32_t>());
+            this->get_top()
 
  
             //Getting the good version number.
