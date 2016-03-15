@@ -27,6 +27,7 @@ void InfoPreamble::define_children() {
             this->add_child(                              new Integer<uint32_t>());
             this->add_child(FEN_DATA_ADRESS,              new Integer<uint32_t>());
             this->add_child(FEN_N_CONTROLLERS,            new Integer<uint32_t>());
+
             //The number of cotrollers is read directly.
             int nController=this->get_child(FEN_N_CONTROLLERS)->get_int();
             this->add_child(FEN_N_CONTROLLERS2,           new Integer<uint32_t>());
