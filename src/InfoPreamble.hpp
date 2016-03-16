@@ -3,7 +3,7 @@
 
 #include "Element.hpp"
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class InfoPreamble : public Element {
 
@@ -11,7 +11,7 @@ namespace org::openscience::ms::finnigan {
 			void define_children();
 	};
 
-}
+}}}}
 
 #endif // FEN_INFO_PREAMBLE
 

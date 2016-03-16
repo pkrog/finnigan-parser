@@ -3,7 +3,7 @@
 
 #include <string>
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class Element;
 
@@ -15,6 +15,6 @@ namespace org::openscience::ms::finnigan {
 			virtual void data_read(const Element*) {}
 
 	};
-}
+}}}}
 
 #endif // FINNIGAN_OBSERVER

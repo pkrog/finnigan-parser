@@ -4,7 +4,7 @@
 #include "Element.hpp"
 #include "common.hpp"
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class PString : public Element {
 
@@ -30,7 +30,7 @@ namespace org::openscience::ms::finnigan {
 					uint32_t length;
 					this->get_stream().read(reinterpret_cast<char*>(&length), sizeof(length));
 					this->length = length;
-					
+
 					if (length) {
 						uint16_t x[length];
 						this->get_stream().read(reinterpret_cast<char*>(&x), sizeof(uint16_t) * length);
@@ -48,6 +48,6 @@ namespace org::openscience::ms::finnigan {
 			unsigned int length;
 			std::wstring value;
 	};
-}
+}}}}
 
 #endif // FINNIGAN_PSTRING

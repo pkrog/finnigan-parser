@@ -4,7 +4,7 @@
 #include "Element.hpp"
 #include "common.hpp"
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class CString : public Element {
 
@@ -38,6 +38,6 @@ namespace org::openscience::ms::finnigan {
 			unsigned int length;
 			std::wstring value;
 	};
-}
+}}}}
 
 #endif // FINNIGAN_CSTRING

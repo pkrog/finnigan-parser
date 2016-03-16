@@ -3,7 +3,7 @@
 
 #include "Element.hpp"
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	template<typename T> class Integer : public Element {
 
@@ -34,6 +34,6 @@ namespace org::openscience::ms::finnigan {
 			T value;
 	};
 
-}
+}}}}
 
 #endif // FINNIGAN_INTEGER

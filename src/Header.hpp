@@ -3,7 +3,7 @@
 
 #include "Element.hpp"
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class Header : public Element {
 
@@ -11,6 +11,6 @@ namespace org::openscience::ms::finnigan {
 			void define_children();
 	};
 
-}
+}}}}
 
 #endif // FINNIGAN_HEADER

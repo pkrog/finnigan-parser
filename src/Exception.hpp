@@ -1,11 +1,11 @@
 #ifndef FINNIGAN_EXCEPTION
-#define FINNIGAN_EXCEPTION 
+#define FINNIGAN_EXCEPTION
 
 #include <string>
 #include <sstream>
 #include "common.hpp"
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class Exception {
 		public:
@@ -47,6 +47,6 @@ namespace org::openscience::ms::finnigan {
 			std::string file;
 			std::wstring signature;
 	};
-}
+}}}}
 
 #endif // FINNIGAN_EXCEPTION

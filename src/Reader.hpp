@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class Observer;
 
@@ -32,6 +32,6 @@ namespace org::openscience::ms::finnigan {
 			std::ifstream  ifs;
 	};
 
-}
+}}}}
 
 #endif // FINNIGAN_READER

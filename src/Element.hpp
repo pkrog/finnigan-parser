@@ -7,14 +7,14 @@
 #include <vector>
 #include <fstream>
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class Reader;
 
 	class Element {
 
 		public:
-		
+
 			Element* get_child(const std::wstring& name);
 
 			std::wstring get_name() const { return this->name; }
@@ -66,6 +66,6 @@ namespace org::openscience::ms::finnigan {
 	////////////////////////////
 
 	std::wostream& operator << (std::wostream& os, const Element& e);
-}
+}}}}
 
 #endif // FINNIGAN_ELEMENT

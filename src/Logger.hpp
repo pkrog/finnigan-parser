@@ -5,7 +5,7 @@
 #include <ostream>
 #include <string>
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	class Logger : public Observer {
 
@@ -20,6 +20,6 @@ namespace org::openscience::ms::finnigan {
 
 			std::wostream& out;
 	};
-}
+}}}}
 
 #endif // FINNIGAN_LOGGER

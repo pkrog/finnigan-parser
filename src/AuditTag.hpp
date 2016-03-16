@@ -3,7 +3,7 @@
 
 #include "Element.hpp"
 
-namespace org::openscience::ms::finnigan {
+namespace namespace org{ namespace openscience { namespace ms{ namespace finnigan{
 
 	class AuditTag : public Element {
 
@@ -11,7 +11,7 @@ namespace org::openscience::ms::finnigan {
 
 			void define_children();
 	};
-}
+}}}}
 
 
 #endif // FINNIGAN_AUDITTAG

@@ -4,7 +4,7 @@
 #include "Element.hpp"
 #include <vector>
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 	template<typename T> class IntegerArray : public Element {
 
@@ -28,6 +28,6 @@ namespace org::openscience::ms::finnigan {
 			unsigned int length;
 			std::vector<T> value;
 	};
-}
+}}}}
 
 #endif // FINNIGAN_INTEGER_ARRAY

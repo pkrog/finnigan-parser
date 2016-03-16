@@ -3,10 +3,10 @@
 
 #include "Element.hpp"
 
-namespace org::openscience::ms::finnigan {
+namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 	class RawFileInfo : public Element {
 
 		public:
 			void define_children();
 	};
-}
+}}}}
