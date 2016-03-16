@@ -29,6 +29,32 @@ void InfoPreamble::define_children() {
         this->add_child(FEN_FILENAME_11,          new IntegerArray<uint16_t>(260));
         this->add_child(FEN_FILENAME_12,          new IntegerArray<uint16_t>(260));
         this->add_child(FEN_FILENAME_13,          new IntegerArray<uint16_t>(260));
+        if(this->get_version()<64){
+            this->add_child(FEN_SCAN_TRAILER_ADR,         new Integer<uint32_t>());
+            this->add_child(FEN_SCAN_PARAMS_ADR,          new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(FEN_NSEGS,                    new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(FEN_OWN_ADRESS,               new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            // TO DO when adding hte sample info, whild need to be added here.
+        }else{
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+
+
+        }
 
 	}
 }
