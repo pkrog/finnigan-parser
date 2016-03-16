@@ -13,34 +13,22 @@ using namespace org::openscience::ms::finnigan;
 void InfoPreamble::define_children() {
 	if (this->children.empty()) {
 	    //Children common to all the version.
-        this->add_child(FEN_SAMPLE_INFO,          new Integer<uint32_t>());
-        this->add_child(FEN_YEAR,                 new Integer<uint16_t>());
-		this->add_child(FEN_MONTH,                new Integer<uint16_t>());
-		this->add_child(FEN_WEEKDAY,              new Integer<uint16_t>());
-		this->add_child(FEN_DAY,                  new Integer<uint16_t>());
-		this->add_child(FEN_HOUR,                 new Integer<uint16_t>());
-		this->add_child(FEN_MINUTE,               new Integer<uint16_t>());
-		this->add_child(FEN_SECOND,               new Integer<uint16_t>());
-		this->add_child(FEN_MILLISECOND,          new Integer<uint16_t>());
-
-		//Version superior to 57.
-        if(this->get_version()>=57){
-            this->add_child(                              new Integer<uint32_t>());
-            this->add_child(FEN_DATA_ADRESS,              new Integer<uint32_t>());
-            this->add_child(FEN_N_CONTROLLERS,            new Integer<uint32_t>());
-            //The number of cotrollers is read directly.
-            int nController=this->get_child(FEN_N_CONTROLLERS)->get_int();
-            //Adding the correct number of child depending of the version.
-            this->add_child(FEN_N_CONTROLLERS2,           new Integer<uint32_t>());
-            this->get_top();
-
-
-            //Getting the good version number.
-
-            if(this->get_version()<64){
-
-            }
-        }
+        this->add_child(FEN_SAMPLE_INFO,          new Integer<uint32_t>());// TO CHANGE TO SAMPLE INFO CLASS
+        this->add_child(FEN_FILENAME_1,           new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_2,           new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_3,           new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_4,           new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_5,           new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_6,           new IntegerArray<uint16_t>(260));
+        this->add_child(                          new Float<double>();
+        this->add_child(                          new Float<double>();
+        this->add_child(FEN_FILENAME_7,           new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_8,           new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_9,           new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_10,          new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_11,          new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_12,          new IntegerArray<uint16_t>(260));
+        this->add_child(FEN_FILENAME_13,          new IntegerArray<uint16_t>(260));
 
 	}
 }
