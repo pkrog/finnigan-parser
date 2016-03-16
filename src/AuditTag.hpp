@@ -3,7 +3,7 @@
 
 #include "Element.hpp"
 
-namespace namespace org{ namespace openscience { namespace ms{ namespace finnigan{
+namespace org{ namespace openscience { namespace ms{ namespace finnigan{
 
 	class AuditTag : public Element {
 

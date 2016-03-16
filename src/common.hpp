@@ -44,13 +44,13 @@
 #define FEN_DAY                 L"day"
 #define FEN_HOUR                L"hour"
 #define FEN_MINUTE              L"minute"
+#define FEN_SECOND              L"second"
 #define FEN_MILLISECOND         L"millisecond"
 #define FEN_DATA_ADRESS         L"data_address"
 #define FEN_RUN_HEADER_ADDR     L"run_header_address"
 #define FEN_PADDING             L"padding"
 #define FEN_N_CONTROLLERS       L"n_controllers"
 #define FEN_N_CONTROLLERS2      L"n_controllers_2"
-#define FEN_RUN_HEADER_ADDR     L"run_header_addr"
 ///////////////
 // CONSTANTS //
 ///////////////
