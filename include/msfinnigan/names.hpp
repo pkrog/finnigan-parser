@@ -1,5 +1,5 @@
-#ifndef FINNIGAN_COMMON
-#define FINNIGAN_COMMON
+#ifndef FINNIGAN_NAMES
+#define FINNIGAN_NAMES
 
 ///////////////////
 // ELEMENT NAMES //
@@ -78,6 +78,4 @@
 #define FEN_TAG_3               L"tag3"
 #define FEN_TAG_4               L"tag4"
 
-}}}}
-
-#endif // FINNIGAN_COMMON
+#endif // FINNIGAN_NAMES

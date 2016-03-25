@@ -1,6 +1,7 @@
 #include "Element.hpp"
 #include "Observer.hpp"
 #include "Reader.hpp"
+#include "names.hpp"
 
 using namespace org::openscience::ms::finnigan;
 

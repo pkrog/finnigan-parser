@@ -2,6 +2,7 @@
 #include "Integer.hpp"
 #include "IntegerArray.hpp"
 #include "Float.hpp"
+#include "names.hpp"
 
 using namespace org::openscience::ms::finnigan;
 

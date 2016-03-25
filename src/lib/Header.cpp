@@ -3,6 +3,7 @@
 #include "IntegerArray.hpp"
 #include "CString.hpp"
 #include "AuditTag.hpp"
+#include "names.hpp"
 
 using namespace org::openscience::ms::finnigan;
 

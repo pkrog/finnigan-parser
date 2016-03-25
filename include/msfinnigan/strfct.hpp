@@ -1,5 +1,5 @@
-#ifndef FINNIGAN_COMMON
-#define FINNIGAN_COMMON
+#ifndef FINNIGAN_STRFCT
+#define FINNIGAN_STRFCT
 
 #include <string>
 
@@ -20,4 +20,4 @@ namespace org { namespace openscience { namespace ms { namespace finnigan {
 
 }}}}
 
-#endif // FINNIGAN_COMMON
+#endif // FINNIGAN_STRFCT

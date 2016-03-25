@@ -3,6 +3,7 @@
 #include "PString.hpp"
 #include "Integer.hpp"
 #include "InfoPreamble.hpp"
+#include "names.hpp"
 
 using namespace org::openscience::ms::finnigan;
 
