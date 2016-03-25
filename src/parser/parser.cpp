@@ -1,6 +1,5 @@
 #include <iostream>
-#include <msfinnigan/Logger.hpp>
-#include <msfinnigan/Reader.hpp>
+#include <msfinnigan.hpp>
 
 using namespace org::openscience::ms::finnigan;
 
