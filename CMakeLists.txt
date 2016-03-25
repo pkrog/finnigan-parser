@@ -1,11 +1,24 @@
 cmake_minimum_required(VERSION 2.8)
 project(finnigan-parser)
 
-find_package(Boost REQUIRED)
+#########
+# BOOST #
+#########
 
+find_package(Boost 1.59.0 REQUIRED)
+
+if(Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+endif()
+
+##################
+# COMPILER FLAGS #
+##################
+
+# Enabling C++ 11 for MacOS-X
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 	add_definitions(-std=c++11)
-	add_definitions(-Wno-c++1z-extensions)
+	#	add_definitions(-Wno-c++1z-extensions)
 endif()
 
 ############
@@ -21,7 +34,24 @@ endif()
 #                OUTPUT_FILE 20150403_G46_N1060_NEG_Test.output
 #                )
 
-file(GLOB sources RELATIVE ${CMAKE_CURRENT_LIST_DIR} src/*.cpp)
-include_directories(${Boost_INCLUDE_DIRS})
-add_executable(finnigan-parser ${sources})
-#TARGET_LINK_LIBRARIES(finnigan-parser ${Boost_LIBRARIES})
+###########
+# LIBRARY #
+###########
+
+file(GLOB libsrc RELATIVE ${CMAKE_CURRENT_LIST_DIR} src/lib/*.cpp)
+add_library(finnigan SHARED ${libsrc})
+target_include_directories(finnigan PUBLIC include)
+target_include_directories(finnigan PRIVATE include/msfinnigan)
+
+###########
+# PROGRAM #
+###########
+
+file(GLOB prgsrc RELATIVE ${CMAKE_CURRENT_LIST_DIR} src/parser/*.cpp)
+add_executable(finnigan-parser ${prgsrc})
+target_link_libraries(finnigan-parser finnigan)
+
+#########
+# TESTS #
+#########
+

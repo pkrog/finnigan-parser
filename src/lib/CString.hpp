@@ -2,7 +2,7 @@
 #define FINNIGAN_CSTRING
 
 #include "Element.hpp"
-#include "common.hpp"
+#include "constants.hpp"
 
 namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 

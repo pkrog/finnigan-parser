@@ -1,9 +1,6 @@
 #ifndef FINNIGAN_COMMON
 #define FINNIGAN_COMMON
 
-#include <string>
-#include <boost/any.hpp>
-
 ///////////////////
 // ELEMENT NAMES //
 ///////////////////
@@ -44,35 +41,43 @@
 #define FEN_DAY                 L"day"
 #define FEN_HOUR                L"hour"
 #define FEN_MINUTE              L"minute"
+#define FEN_SECOND              L"second"
 #define FEN_MILLISECOND         L"millisecond"
 #define FEN_DATA_ADRESS         L"data_address"
-#define FEN_RUN_HEADER_ADDR     L"run_header_address"
+#define FEN_RUN_HEADER_ADR     L"run_header_address"
 #define FEN_PADDING             L"padding"
 #define FEN_N_CONTROLLERS       L"n_controllers"
 #define FEN_N_CONTROLLERS2      L"n_controllers_2"
+#define FEN_SAMPLE_INFO         L"sample_info"
+#define FEN_FILENAME_1          L"filename_1"
+#define FEN_FILENAME_2          L"filename_2"
+#define FEN_FILENAME_3          L"filename_3"
+#define FEN_FILENAME_4          L"filename_4"
+#define FEN_FILENAME_5          L"filename_5"
+#define FEN_FILENAME_6          L"filename_6"
+#define FEN_FILENAME_7          L"filename_7"
+#define FEN_FILENAME_8          L"filename_8"
+#define FEN_FILENAME_9          L"filename_9"
+#define FEN_FILENAME_10         L"filename_10"
+#define FEN_FILENAME_11         L"filename_11"
+#define FEN_FILENAME_12         L"filename_12"
+#define FEN_FILENAME_13         L"filename_13"
+#define FEN_NSEGS               L"nsegs"
+#define FEN_SCAN_TRAILER_ADR    L"scan_trailer_address"
+#define FEN_SCAN_PARAMS_ADR     L"scan_params_address"
+#define FEN_OWN_ADRESS          L"own_adress"
+#define FEN_SCAN_INDEX_ADR      L"scan_index_adr"
+#define FEN_DATA_ADR            L"data_adr"
+#define FEN_ERROR_LOG_ADR       L"error_log_adr"
+#define FEN_DEVICE              L"device"
+#define FEN_MODEL               L"model"
+#define FEN_SN                  L"sn"
+#define FEN_SWVER               L"swver"
+#define FEN_TAG_1               L"tag1"
+#define FEN_TAG_2               L"tag2"
+#define FEN_TAG_3               L"tag3"
+#define FEN_TAG_4               L"tag4"
 
-///////////////
-// CONSTANTS //
-///////////////
-
-#define FINNIGAN_MAGIC      0xa101
-#define FINNIGAN_SIGNATURE  L"Finnigan"
-
-////////////////////
-// HELP FUNCTIONS //
-////////////////////
-
-namespace org::openscience::ms::finnigan {
-
-	template<typename T> std::wstring arr2wstring(const T* p) {
-
-		const T* q = p;
-		while (*q != 0)
-			++q;
-
-		return std::wstring(p, q);
-	}
-
-}
+}}}}
 
 #endif // FINNIGAN_COMMON

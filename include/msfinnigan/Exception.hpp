@@ -3,9 +3,10 @@
 
 #include <string>
 #include <sstream>
-#include "common.hpp"
+#include <msfinnigan/strfct.hpp>
+#include <msfinnigan/constants.hpp>
 
-namespace org{ namespace openscience { namespace ms{ namespace finnigan {
+namespace org { namespace openscience { namespace ms { namespace finnigan {
 
 	class Exception {
 		public:

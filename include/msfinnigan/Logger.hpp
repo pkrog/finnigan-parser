@@ -1,7 +1,7 @@
 #ifndef FINNIGAN_LOGGER
 #define FINNIGAN_LOGGER
 
-#include "Observer.hpp"
+#include <msfinnigan/Observer.hpp>
 #include <ostream>
 #include <string>
 
