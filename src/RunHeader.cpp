@@ -39,7 +39,7 @@ void RunHeader::define_children() {
             this->add_child(FEN_OWN_ADRESS,               new Integer<uint32_t>());
             this->add_child(                              new Integer<uint32_t>());
             this->add_child(                              new Integer<uint32_t>());
-            // TO DO when adding hte sample info, whild need to be added here.
+            // TO DO when adding hte sample info, child need to be added here.
         }else{
             this->add_child(                              new Integer<uint32_t>());
             this->add_child(                              new Integer<uint32_t>());
@@ -51,10 +51,50 @@ void RunHeader::define_children() {
             this->add_child(                              new Integer<uint32_t>());
             this->add_child(                              new Integer<uint32_t>());
             this->add_child(                              new Integer<uint32_t>());
-
-
+            this->add_child(FEN_SCAN_INDEX_ADR,           new Integer<uint64_t>());
+            this->add_child(FEN_DATA_ADR,                 new Integer<uint64_t>());
+            this->add_child(FEN_INST_LOG_ADR,             new Integer<uint64_t>());
+            this->add_child(FEN_ERROR_LOG_ADR,            new Integer<uint64_t>());
+            this->add_child(                              new Integer<uint64_t>());
+            this->add_child(FEN_SCAN_TRAILER_ADR,         new Integer<uint64_t>());
+            this->add_child(FEN_SCAN_PARAMS_ADR,          new Integer<uint64_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(FEN_OWN_ADRESS,               new Integer<uint64_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
         }
-
+        this->add_child(                              new Integer<uint64_t>()); // bytes[8] ???
+        this->add_child(                              new Integer<uint32_t>());
+        this->add_child(FEN_DEVICE,                   new PString());
+        this->add_child(FEN_MODEL,                    new PString());
+        this->add_child(FEN_SN,                       new PString());
+        this->add_child(FEN_SWVER,                    new PString());
+        this->add_child(FEN_TAG_1,                    new PString());
+        this->add_child(FEN_TAG_2,                    new PString());
+        this->add_child(FEN_TAG_3,                    new PString());
+        this->add_child(FEN_TAG_4,                    new PString());
 	}
 }
 

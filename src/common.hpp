@@ -71,6 +71,7 @@
 #define FEN_OWN_ADRESS          L"own_adress"
 #define FEN_SCAN_INDEX_ADR      L"scan_index_adr"
 #define FEN_DATA_ADR            L"data_adr"
+#define FEN_INST_LOG_ADR        L"inst_log_adr"
 #define FEN_ERROR_LOG_ADR       L"error_log_adr"
 #define FEN_DEVICE              L"device"
 #define FEN_MODEL               L"model"
