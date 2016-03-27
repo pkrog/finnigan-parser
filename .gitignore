@@ -2,3 +2,5 @@ build
 .swp
 .*.swp
 bitbucket.org
+.cpp~
+.hpp~
