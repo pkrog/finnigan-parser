@@ -10,3 +10,5 @@ namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 			void define_children();
 	};
 }}}}
+
+#endif // FINNIGAN_RUN_HEADER

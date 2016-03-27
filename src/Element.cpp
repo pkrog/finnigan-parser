@@ -73,7 +73,7 @@ int64_t Element::get_pos() {
 /////////////
 // SET POS //  Function to set the pos when the adress is written in the file.
 /////////////
-int64_t Element::set_pos(int64_t fixed_pos) {
+void Element::set_pos(int64_t fixed_pos) {
 	if (this->pos < 0)
 		this->pos=fixed_pos;
 

@@ -48,7 +48,7 @@ namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 			// Position and size
 			int64_t get_pos();
-			int64_t set_pos(int64_t fixed_pos);
+			void set_pos(int64_t fixed_pos);
 			virtual int get_byte_size_in_file() const;
 			void compute_pos_of_child(Element *child);
 

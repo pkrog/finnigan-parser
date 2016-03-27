@@ -19,7 +19,7 @@ namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 
 			std::wstring get_path() const { return L""; }
 
-			Element * get_run_header(int i);
+			Element* get_run_header(int i);
 
 		protected:
 
