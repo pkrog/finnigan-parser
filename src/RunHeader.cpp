@@ -2,6 +2,8 @@
 #include "Integer.hpp"
 #include "IntegerArray.hpp"
 #include "Float.hpp"
+#include "PString.hpp"
+
 
 using namespace org::openscience::ms::finnigan;
 
