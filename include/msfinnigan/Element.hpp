@@ -1,8 +1,8 @@
 #ifndef FINNIGAN_ELEMENT
 #define FINNIGAN_ELEMENT
 
-#include "Exception.hpp"
-#include "Observer.hpp"
+#include <msfinnigan/Exception.hpp>
+#include <msfinnigan/Observer.hpp>
 #include <list>
 #include <vector>
 #include <fstream>

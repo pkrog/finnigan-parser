@@ -2,6 +2,7 @@
 #include "Integer.hpp"
 #include "Float.hpp"
 #include "CString.hpp"
+#include "names.hpp"
 
 using namespace org::openscience::ms::finnigan;
 

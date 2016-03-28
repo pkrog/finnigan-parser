@@ -1,11 +1,11 @@
 #ifndef FINNIGAN_READER
 #define FINNIGAN_READER
 
-#include "Element.hpp"
+#include <msfinnigan/Element.hpp>
 #include <string>
 #include <fstream>
 
-namespace org{ namespace openscience { namespace ms{ namespace finnigan {
+namespace org { namespace openscience { namespace ms { namespace finnigan {
 
 	class Observer;
 

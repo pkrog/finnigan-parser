@@ -1,5 +1,5 @@
 #include "Logger.hpp"
-#include "common.hpp"
+#include "constants.hpp"
 #include "Element.hpp"
 
 using namespace org::openscience::ms::finnigan;

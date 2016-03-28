@@ -1,7 +1,8 @@
 #include "Reader.hpp"
 #include "Header.hpp"
 #include "SequencerRow.hpp"
-#include "common.hpp"
+#include "constants.hpp"
+#include "names.hpp"
 #include <iostream>
 
 using namespace org::openscience::ms::finnigan;
