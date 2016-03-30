@@ -2,6 +2,7 @@
 #include "PString.hpp"
 #include "RawFileInfo.hpp"
 #include "Integer.hpp"
+#include "names.hpp"
 
 using namespace org::openscience::ms::finnigan;
 

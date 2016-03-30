@@ -34,16 +34,16 @@ Reader::Reader(const std::string& file, Observer *obs) :
 		throw WrongSignature(file, sig);
 }
 
-Element* Reader::get_run_header(int i){
-    // Really ugly but i did not get why it failed.
-    std::wstring nrunheader= FEN_RUN_HEADER;
-    nrunheader+=L"_";
-    nrunheader+=std::to_wstring(i);
-    Element * res = this->get_child(nrunheader);
-    if (!res)
-		throw WrongRunHeader(i);
-    return(res);
-}
+//Element* Reader::get_run_header(int i){
+//    // Really ugly but i did not get why it failed.
+//    std::wstring nrunheader= FEN_RUN_HEADER;
+//    nrunheader+=L"_";
+//    nrunheader+=std::to_wstring(i);
+//    Element * res = this->get_child(nrunheader);
+//    if (!res)
+//		throw WrongRunHeader(i);
+//    return(res);
+//}
 
 /////////////////////
 // DEFINE CHILDREN //

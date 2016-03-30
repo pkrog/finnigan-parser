@@ -32,20 +32,25 @@ void InfoPreamble::define_children() {
             this->add_child(FEN_N_CONTROLLERS2,           new Integer<uint32_t>());
             this->add_child(                              new Integer<uint32_t>());
             this->add_child(                              new Integer<uint32_t>());
-            //The number of cotrollers is read directly.
+            //The number of cotrollers is read.
             if(this->get_version()<64){
                 int nController=this->get_child(FEN_N_CONTROLLERS)->get_int();
-
                 for(int i=0;i<nController;i++){
+                //Reading the adress
+                    std::wstring nameadress = FEN_RUN_HEADER_ADR;
+                    nameadress += L"_";
+                    nameadress += std::to_wstring(i);
+                    this->add_child(nameadress,            new Integer<uint32_t>());
+                    this->add_child(                       new Integer<uint32_t>());
+                    this->add_child(                       new Integer<uint32_t>());
+                    uint64_t addr_run_header=(uint64_t)this->get_child(nameadress)->get_int();
+                //putting the pos of the child.
                     std::wstring namechild = FEN_RUN_HEADER;
                     namechild += L"_";
                     namechild += std::to_wstring(i);
                     this->get_top()->add_child(namechild,          new RunHeader());
-
-                    //The position is directly set.
-                    this->get_top()->get_child(namechild)->set_pos();
-            }
-
+                    this->get_top()->get_child(namechild)->set_pos(nadress);
+                }
             }
             //Adding the correct number of child depending of the version.
             this->add_child(FEN_N_CONTROLLERS2,           new Integer<uint32_t>());
