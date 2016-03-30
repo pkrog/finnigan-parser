@@ -55,3 +55,10 @@ target_link_libraries(finnigan-parser finnigan)
 # TESTS #
 #########
 
+# Compile tests
+add_executable(test-finnigan test/test-finnigan.cpp)
+target_link_libraries(test-finnigan finnigan)
+
+# Run tests
+enable_testing()
+add_test(test_finnigan test-finnigan ${CMAKE_CURRENT_LIST_DIR}/test)

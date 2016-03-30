@@ -8,6 +8,10 @@
 
 namespace org { namespace openscience { namespace ms { namespace finnigan {
 
+	///////////////
+	// EXCEPTION //
+	///////////////
+
 	class Exception {
 		public:
 			virtual std::wstring what() const = 0;
@@ -23,6 +27,10 @@ namespace org { namespace openscience { namespace ms { namespace finnigan {
 			std::wstring type_name;
 	};
 
+	////////////////////////
+	// WRONG MAGIC NUMBER //
+	////////////////////////
+
 	class WrongMagicNumber : public Exception {
 		public:
 			WrongMagicNumber(const std::string& file, int magic) : file(file), magic(magic) {}
@@ -35,6 +43,10 @@ namespace org { namespace openscience { namespace ms { namespace finnigan {
 			std::string file;
 			int magic;
 	};
+
+	/////////////////////
+	// WRONG SIGNATURE //
+	/////////////////////
 
 	class WrongSignature : public Exception {
 		public:
