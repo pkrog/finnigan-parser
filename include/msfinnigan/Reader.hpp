@@ -19,6 +19,8 @@ namespace org { namespace openscience { namespace ms { namespace finnigan {
 
 			std::wstring get_path() const { return L""; }
 
+			Element* get_run_header(int i);
+
 		protected:
 
 			std::ifstream& get_stream() { return this->ifs; }

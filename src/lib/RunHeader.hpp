@@ -8,6 +8,7 @@ namespace org{ namespace openscience { namespace ms{ namespace finnigan {
 	class RunHeader : public Element {
 
 		public:
+			RunHeader(int64_t pos);
 			void define_children();
 	};
 

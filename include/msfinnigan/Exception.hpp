@@ -60,6 +60,19 @@ namespace org { namespace openscience { namespace ms { namespace finnigan {
 			std::string file;
 			std::wstring signature;
 	};
+
+	class WrongRunHeader : public Exception {
+		public:
+			WrongRunHeader(const int index) : index(index) {}
+			std::wstring what() const {
+				std::wstringstream wss;
+				wss << L"RunHeader \"" << index << L" could not be found.";
+				return wss.str();
+			}
+		private:
+            int index;
+	};
+
 }}}}
 
 #endif // FINNIGAN_EXCEPTION

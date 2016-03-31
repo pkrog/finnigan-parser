@@ -29,12 +29,23 @@ void InfoPreamble::define_children() {
             this->add_child(                              new Integer<uint32_t>());
             this->add_child(FEN_DATA_ADRESS,              new Integer<uint32_t>());
             this->add_child(FEN_N_CONTROLLERS,            new Integer<uint32_t>());
-            //The number of cotrollers is read directly.
-            int nController=this->get_child(FEN_N_CONTROLLERS)->get_int();
+            this->add_child(FEN_N_CONTROLLERS2,           new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            this->add_child(                              new Integer<uint32_t>());
+            //The number of cotrollers is read.
+            if(this->get_version()<64){
+                int nController=this->get_child(FEN_N_CONTROLLERS)->get_int();
+                for(int i=0;i<nController;i++){
+
+                	// Read address
+                    std::wstring run_header_address = FEN_RUN_HEADER_ADDRESS L"_" + std::to_wstring(i);
+                    this->add_child(run_header_address,    new Integer<uint32_t>());
+                    this->add_child(                       new Integer<uint32_t>());
+                    this->add_child(                       new Integer<uint32_t>());
+                }
+            }
             //Adding the correct number of child depending of the version.
             this->add_child(FEN_N_CONTROLLERS2,           new Integer<uint32_t>());
-            this->get_top();
-
 
             //Getting the good version number.
 

@@ -48,7 +48,7 @@ void Element::add_child(Element* child) {
 ///////////////
 
 Element* Element::get_child(const std::wstring& name) {
-	
+
 	this->define_children();
 
 	for (auto c: this->children)
@@ -68,6 +68,15 @@ int64_t Element::get_pos() {
 		this->parent->compute_pos_of_child(this);
 
 	return this->pos;
+}
+
+/////////////
+// SET POS //  Function to set the pos when the adress is written in the file.
+/////////////
+void Element::set_pos(int64_t fixed_pos) {
+	if (this->pos < 0)
+		this->pos=fixed_pos;
+
 }
 
 ///////////////////////////////
@@ -90,7 +99,7 @@ void Element::compute_pos_of_child(Element *child) {
 ///////////////////////////
 
 int Element::get_byte_size_in_file() const {
-	
+
 	int sz = 0;
 
 	const_cast<Element*>(this)->define_children();
@@ -106,7 +115,7 @@ int Element::get_byte_size_in_file() const {
 //////////
 
 void Element::read() {
-	
+
 	this->define_children();
 
 	for (auto c: this->children)
