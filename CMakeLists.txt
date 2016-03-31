@@ -5,7 +5,7 @@ project(finnigan-parser)
 # BOOST #
 #########
 
-find_package(Boost 1.59.0 REQUIRED)
+find_package(Boost 1.59.0 REQUIRED COMPONENTS filesystem unit_test_framework system)
 
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
@@ -49,7 +49,7 @@ target_include_directories(finnigan PRIVATE include/msfinnigan)
 
 file(GLOB prgsrc RELATIVE ${CMAKE_CURRENT_LIST_DIR} src/parser/*.cpp)
 add_executable(finnigan-parser ${prgsrc})
-target_link_libraries(finnigan-parser finnigan)
+target_link_libraries(finnigan-parser finnigan ${Boost_LIBRARIES})
 
 #########
 # TESTS #
@@ -57,7 +57,7 @@ target_link_libraries(finnigan-parser finnigan)
 
 # Compile tests
 add_executable(test-finnigan test/test-finnigan.cpp)
-target_link_libraries(test-finnigan finnigan)
+target_link_libraries(test-finnigan finnigan ${Boost_LIBRARIES})
 
 # Run tests
 enable_testing()

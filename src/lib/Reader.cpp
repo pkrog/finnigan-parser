@@ -9,9 +9,6 @@
 
 using namespace org::openscience::ms::finnigan;
 
-// TODO Remove Factory, because Reader can read version from header.
-// TODO Rename Property to Field.
-
 /////////////////
 // CONSTRUCTOR //
 /////////////////
