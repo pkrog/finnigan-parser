@@ -7,6 +7,14 @@
 
 using namespace org::openscience::ms::finnigan;
 
+/////////////////
+// CONSTRUCTOR //
+/////////////////
+
+RunHeader::RunHeader(int64_t pos) :
+	Element(pos) {
+}
+
 /////////////////////
 // DEFINE CHILDREN //
 /////////////////////
